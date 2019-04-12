@@ -5,9 +5,8 @@ import java.util.ArrayList;
 public class Fighter {
     private Weapon weapon;
     private Armor[] armors = new Armor[2];
-    private ArrayList<Treasure> treasures = new ArrayList<>();
+    private ArrayList<Treasure> treasures;
     private int hitPoints;
-    private int numberGenerated;
 
     public Fighter(Weapon weapon, Armor armor, ArrayList<Treasure> treasures, int hitPoints) {
         this.weapon = weapon;
@@ -49,15 +48,7 @@ public class Fighter {
         this.hitPoints = hitPoints;
     }
 
-    public int getNumberGenerated() {
-        return numberGenerated;
-    }
 
-    public void setNumberGenerated(int numberGenerated) {
-        this.numberGenerated = numberGenerated;
-    }
 
-    public void fight(Fighter f){
 
-    }
 }
