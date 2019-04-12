@@ -4,7 +4,7 @@ public class Armor {
     private String name;
     private int protection;
     private Boolean isRecuperable;
-    private int Type;
+    private int Type;//type1 is body armor, type2 is shield armor
     
 
     public Armor(String Name, int protection, Boolean isRecuperable,int Type) {
@@ -45,7 +45,7 @@ public class Armor {
     public void setType(int Type) {
         this.Type = Type;
     }
-
+//verifies if the lootedArmor can be taken and if the armors are the same type then checks if its better than the current armor
     public Boolean isBetter(Armor lootedArmor){
         if (lootedArmor.getIsRecuperable() && this.Type==lootedArmor.getType()){
             return this.protection < lootedArmor.getProtection();
