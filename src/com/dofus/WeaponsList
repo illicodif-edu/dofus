@@ -1,0 +1,11 @@
+Weapon swortStartUser= new Weapon("sword",2,1,8);
+// initialisation of the Weapon of the user at the beginning
+Weapon dagger = new Weapon("dagger",3,1,4);
+Weapon venom = new Weapon("venom",1,4,20);
+Weapon hands = new Weapon("hands",4,1,8);
+Weapon swordBerserker = new Weapon("sword",4,1,8);
+Weapon superSword = new Weapon("super sword",4,2,8);
+Weapon claws = new Weapon("claws",2,11,20);
+Weapon dopplegangerWeaponInit = new Weapon("NULL",1,0,0);
+// The doppleganger will get others values during its fight with the use
+Weapon lightningBolts= new Weapon("lighting bolts", 1,21,40);
