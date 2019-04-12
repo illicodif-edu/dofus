@@ -3,6 +3,7 @@ package com.dofus;
 import java.util.ArrayList;
 
 public class Fighter {
+    private String name;
     private Weapon weapon;
     private Armor[] armors = new Armor[2];
     private ArrayList<Treasure> treasures;
