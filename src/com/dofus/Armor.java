@@ -46,9 +46,9 @@ public class Armor {
         this.Type = Type;
     }
 
-    public static Boolean isBetter(Armor currentArmor,Armor lootedArmor){
-        if (lootedArmor.getIsRecuperable() && currentArmor.getType()==lootedArmor.getType()){
-            return currentArmor.getProtection() < lootedArmor.getProtection();
+    public Boolean isBetter(Armor lootedArmor){
+        if (lootedArmor.getIsRecuperable() && this.Type==lootedArmor.getType()){
+            return this.protection < lootedArmor.getProtection();
         }
         else
             return false;
