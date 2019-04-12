@@ -3,6 +3,6 @@ package com.dofus;
 public class Main {
 
     public static void main(String[] args) {
-	    Fighter[] fighters = new Fighter[8];
+	    ArrayList<Fighter> fighters = new ArrayList<Fighters>();
     }
 }
