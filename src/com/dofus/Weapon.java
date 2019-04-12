@@ -48,11 +48,11 @@ public class Weapon {
     public boolean isRecuperable() {
      if (Type.equals("hands")|| Type.equals("venom")|| Type.equals("claws")|| Type.equals("lightning bolts"))
      {
-       return FALSE;
+       return false;
      }
      else
      {
-       return TRUE;
+       return true;
      } 
     }
 
