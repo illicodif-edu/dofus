@@ -2,8 +2,11 @@ package com.dofus;
 
 public class FighterUser extends Fighter implements ActionListener {
   
-  public Fighter(Weapon weapon, Armor armor, ArrayList<Treasure> treasures, int hitPoints) {
+  private ArrayList<Fighter> fighters;
+  
+  public Fighter(Weapon weapon, Armor armor, ArrayList<Treasure> treasures, int hitPoints, ArrayList<Fighters> fighters) {
       super(weapon, armor, null, treasures, hitPoints);
+      this.fighters = fighters;
    }
   
   
