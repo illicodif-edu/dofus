@@ -9,10 +9,10 @@ public class Fighter {
     private ArrayList<Treasure> treasures;
     private int hitPoints;
 
-    public Fighter(Weapon weapon, Armor armor, ArrayList<Treasure> treasures, int hitPoints) {
+    public Fighter(Weapon weapon, Armor armor1, Armor armor2, ArrayList<Treasure> treasures, int hitPoints) {
         this.weapon = weapon;
-        this.armors[0] = armor;
-        this.armors[1] = null;
+        this.armors[0] = armor1;
+        this.armors[1] = armor2;
         this.treasures = treasures;
         this.hitPoints = hitPoints;
     }
