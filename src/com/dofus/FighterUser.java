@@ -12,12 +12,12 @@ public class FighterUser extends Fighter {
 
 	// To use one of the treasure
 	public void utilizeTreasure() {
-		System.out.println("J'utilise une potion");
+		System.out.println("I use the potion");
 	}
 
 	// To quit
 	public void quit() {
-		System.out.println("Je quitte la partie");
+		System.out.println("I left the game");
 		System.exit(0);
 	}
 
@@ -28,7 +28,7 @@ public class FighterUser extends Fighter {
 
 	// To rest
 	public void rest() {
-		System.out.println("Je dors");
+		System.out.println("I sleep");
 		// 50% chances to regain hp
 		if (Math.random() < 0.5) {
 			this.setHitPoints(this.getHitPoints() + (11 + (int) (Math.random() * ((20 - 11) + 1))));
