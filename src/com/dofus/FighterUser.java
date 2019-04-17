@@ -13,20 +13,17 @@ public class FighterUser extends Fighter {
 	// To use one of the treasure
 	public void utilizeTreasure() {
 		System.out.println("J'utilise une potion");
-
 	}
 
 	// To quit
 	public void quit() {
 		System.out.println("Je quitte la partie");
 		System.exit(0);
-
 	}
 
 	// To fight
 	public void fight() {
 		System.out.println("I fight");
-
 	}
 
 	// To rest
@@ -41,7 +38,6 @@ public class FighterUser extends Fighter {
 		else {
 			this.fight();
 		}
-
 	}
 }
   
