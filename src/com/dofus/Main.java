@@ -86,6 +86,7 @@ public class Main extends JFrame {
 
 	public static void main(String[] args) {
 		ArrayList<Fighter> fighters = new ArrayList<Fighter>();
+		// For a test
 		FighterUser user = new FighterUser(null, null, null, null, 0, null);
 		new Main(user);
 	}
