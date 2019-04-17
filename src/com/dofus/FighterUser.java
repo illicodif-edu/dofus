@@ -43,6 +43,5 @@ public class FighterUser extends Fighter {
 		}
 
 	}
-
 }
   
