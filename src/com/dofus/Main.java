@@ -9,16 +9,21 @@ import java.awt.event.ActionListener;
 
 public class Main extends JFrame {
 	
-	private FighterUser user;
+
+	private FighterUser user; // The user
 	private JPanel panel; // A holding panel
 	private JLabel messageLabel; // A message to the user
+	
+	//The buttons
 	private JButton rest;
 	private JButton quit;
 	private JButton potionScroll;
 	private JButton fight;
+	
 	private final int WINDOW_WIDTH = 800; // Window width
 	private final int WINDOW_HEIGHT = 400; // Window height
-
+	
+	// Constructor
 	public Main(FighterUser user) {
 		
 		this.user = user;
@@ -42,18 +47,24 @@ public class Main extends JFrame {
 	}
 
 	private void buildPanel() {
-
+		// Create the button Listener class
 		ButtonListener buttonL = new ButtonListener();
+		
 		// Create the label, text field, and radio buttons.
 		messageLabel = new JLabel("Bienvenue dans (presque) Dofus");
+		
+		// Create the buttons
 		rest = new JButton("Rest");
 		quit = new JButton("Quit");
 		potionScroll = new JButton("Use a potion or a scoll");
 		fight = new JButton("FIGHTT !!");
+		
+		// Bind the buttons with the listener class
 		rest.addActionListener(buttonL);
 		quit.addActionListener(buttonL);
 		potionScroll.addActionListener(buttonL);
 		fight.addActionListener(buttonL);
+		
 		// Create a panel and add the components to it.
 		panel = new JPanel();
 		panel.add(messageLabel);
@@ -66,7 +77,7 @@ public class Main extends JFrame {
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
-			// Test on the button to trigger the right function
+		    // Test on the button to trigger the right function
 		    if(e.getSource()== potionScroll){
 		      user.utilizeTreasure();
 		    }
