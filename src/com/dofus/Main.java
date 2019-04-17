@@ -1,5 +1,4 @@
 
-
 import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
@@ -11,7 +10,6 @@ public class Main extends JFrame {
 	
 
 	private FighterUser user; // The user
-	private JPanel panel; // A holding panel
 	private JLabel messageLabel; // A message to the user
 	
 	//The buttons
@@ -35,12 +33,12 @@ public class Main extends JFrame {
 
 		// Specify an action for the close button.
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
+		setLayout(new GridLayout(6, 1));
+		
 		// Build the panel and add it to the frame.
 		buildPanel();
-
-		// Add the panel to the frame's content pane.
-		add(panel);
+		
 
 		// Display the window.
 		setVisible(true);
@@ -65,13 +63,13 @@ public class Main extends JFrame {
 		potionScroll.addActionListener(buttonL);
 		fight.addActionListener(buttonL);
 		
-		// Create a panel and add the components to it.
-		panel = new JPanel();
-		panel.add(messageLabel);
-		panel.add(rest);
-		panel.add(quit);
-		panel.add(potionScroll);
-		panel.add(fight);
+		// Add the components to it.
+		add(messageLabel);
+		add(rest);
+		add(quit);
+		add(potionScroll);
+		add(fight);
+		
 	}
 
 	private class ButtonListener implements ActionListener {
