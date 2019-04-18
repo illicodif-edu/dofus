@@ -18,6 +18,18 @@ public class FighterUser extends Fighter {
 		System.out.println("I use the potion");
 	}
 
+	//To use treasure=potion
+	public void utilizePotion(){
+		//30% chance to regain 5-10 hp
+		//40% chance to regain 11-20 hp
+		//20% chance to regain 21-30 hp
+		//10% chance to lose 1-20 hp 
+			//test "kill the user" ?
+	}
+	
+	//To use treasure=scroll
+	public void utilizeScroll(){
+	}
 	// To quit
 	public void quit() {
 		System.out.println("I left the game");
