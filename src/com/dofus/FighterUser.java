@@ -68,6 +68,7 @@ public class FighterUser extends Fighter {
 	{
 		int RandomNumberGenerator= (1 + (int) (Math.random()*((3-1)+1)));
 		
+		//Scroll - Double hit points
 		if (RandomNumberGenerator==1)
 		{
 			System.out.println("Double hit points");
@@ -75,11 +76,13 @@ public class FighterUser extends Fighter {
 			System.out.println("You gain HP! Now, you have" +this.getPoints);
 		}
 		
+		//Scroll - Nothing
 		if (RandomNumberGenerator==2)
 		{
 			System.out.println("Nothing happens...");
 		}
 		
+		//Scroll - Kill the user
 		if (RandomNumberGenerator==3)
 		{
 			System.out.println("Actually, you are dead... Play again");
