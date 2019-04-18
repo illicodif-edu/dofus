@@ -12,12 +12,6 @@ public class FighterUser extends Fighter {
 		super(weapon, armor, null, treasures, hitPoints);
 		this.fighters = fighters;
 	}
-
-	//To use treasure 
-	public void utilizeTreasure
-	{
-		
-	}
 	
 	//To use treasure=potion
 	public void utilizePotion()
@@ -54,6 +48,7 @@ public class FighterUser extends Fighter {
 			//if the User is stil alive
 			System.out.println("You lose HP! Now, you have" + this.getPoints);
 		}
+		treasures.setNbPotions(getNbPotions-1);
 	}
 	
 	public void testDead(){
@@ -89,6 +84,7 @@ public class FighterUser extends Fighter {
 			System.out.println("Actually, you are dead... Play again");
 			this.quit();
 		}
+		treasures.setScroll(getScroll-1);
 	}
 	// To quit
 	public void quit() {
