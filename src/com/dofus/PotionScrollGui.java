@@ -112,10 +112,10 @@ public class PotionScrollGui extends JFrame {
 
 			// Test on the button to trigger the right function
 			if (e.getSource() == potion) {
-				// user.utilizePotion();
+				user.utilizePotion();
 			}
 			if (e.getSource() == scroll) {
-				// user.utilizeScroll();
+				user.utilizeScroll();
 			}
 			if (e.getSource() == back) {
 				dispose();
