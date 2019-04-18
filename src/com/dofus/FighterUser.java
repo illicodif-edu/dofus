@@ -66,8 +66,25 @@ public class FighterUser extends Fighter {
 	//To use treasure=scroll
 	public void utilizeScroll()
 	{
+		int RandomNumberGenerator= (1 + (int) (Math.random()*((3-1)+1)));
 		
+		if (RandomNumberGenerator==1)
+		{
+			System.out.println("Double hit points");
+			this.setHitPoints(this.getHitPoints + this.getHitPoints()*2);
+			System.out.println("You gain HP! Now, you have" +this.getPoints);
+		}
 		
+		if (RandomNumberGenerator==2)
+		{
+			System.out.println("Nothing happens...");
+		}
+		
+		if (RandomNumberGenerator==3)
+		{
+			System.out.println("Actually, you are dead... Play again");
+			this.quit();
+		}
 	}
 	// To quit
 	public void quit() {
