@@ -13,11 +13,6 @@ public class FighterUser extends Fighter {
 		this.fighters = fighters;
 	}
 
-	// To use one of the treasure
-	public void utilizeTreasure() {
-		System.out.println("I use the potion");
-	}
-
 	//To use treasure=potion
 	public void utilizePotion()
 	{
