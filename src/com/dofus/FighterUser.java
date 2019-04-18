@@ -21,7 +21,7 @@ public class FighterUser extends Fighter {
 	//To use treasure=potion
 	public void utilizePotion()
 	{
-		int RandomNumberGenerator= (int)(Math.random()*((1-0)+1));
+		double RandomNumberGenerator= (Math.random()*((1-0)+1));
 		
 		//30% chance to regain 5-10 hp
 		if (RandomNumberGenerator < 0.3) 
@@ -64,7 +64,10 @@ public class FighterUser extends Fighter {
 	}
 	
 	//To use treasure=scroll
-	public void utilizeScroll(){
+	public void utilizeScroll()
+	{
+		
+		
 	}
 	// To quit
 	public void quit() {
