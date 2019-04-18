@@ -115,7 +115,7 @@ public class GameGui extends JFrame {
 			// Test on the button to trigger the right function
 			if (e.getSource() == potionScroll) {
 				dispose();
-				new PotionScrollGUI(user);
+				new PotionScrollGui(user);
 			}
 			if (e.getSource() == rest) {
 				user.rest();
