@@ -1,3 +1,4 @@
+package com.dofus;
 
 import java.util.ArrayList;
 import javax.swing.*;

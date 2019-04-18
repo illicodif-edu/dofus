@@ -1,4 +1,7 @@
+package com.dofus;
+
 import java.util.ArrayList;
+
 
 public class FighterUser extends Fighter {
 
