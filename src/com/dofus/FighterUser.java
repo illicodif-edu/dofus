@@ -161,18 +161,32 @@ public class FighterUser extends Fighter {
 	
 	//To get the attack of a fighter f (not the user, a monster actually) per turn 
 	public int AttackPerTurn(Weapon WeaponFighter){
-		return (WeaponFighter.getAttacksPerTurn()*(WeaponFighter.getMinDamage() + (int) (Math.random() * ((WeaponFighter.getMaxDamage - WeaponFighter.getMinDamage) + 1))));
+		return (WeaponFighter.getAttacksPerTurn()*(WeaponFighter.getMinDamage() + (int) (Math.random() * ((WeaponFighter.getMaxDamage() - WeaponFighter.getMinDamage()) + 1))));
 	}
 	
 	//to set the new value of hp of a fighter f
 	public void takesDamagesF(int hitDamages, Fighter fighterF){
+		fighterF.setHitPoints(fighterF.getHitPoints() -hitDamages);
+		
 	}
 	
 	// to set the new value of hp of the user 
 	public void takesDamagesUser (int hitDamages){
+		this.setHitPoints(this.getHitPoints() -hitDamages);
 	}
+	
 	// to test the possibility of attack the fighter f (in function of his armor)
 	public Boolean isAttacksF(Fighter fighterF){
+		int totalArmor=getTotalArmor(fighterF.getArmors1(),fighterF.getArmors2());
+		int randomNumber= 1+ (int)(Math.random()*((20-1)+1);
+		if (randomNumber>totalArmor)
+		{
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
 	}
 	//isBetterMethods for Weapon after fight
 	public void isBetterWeapon(Weapon WeaponOfMonster, Weapon WeaponOfUser) { // si on met directement les fighters en variable cela peut optimiser le programme
