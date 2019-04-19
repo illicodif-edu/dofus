@@ -8,7 +8,7 @@ public class FighterUser extends Fighter {
 	// ArrayList of fighters
 	private ArrayList<Fighter> fighters;
 
-	public FighterUser(Weapon weapon, Armor armor, Armor armor2, ArrayList<Treasure> treasures, int hitPoints, ArrayList<Fighter> fighters) {
+	public FighterUser(Weapon weapon, Armor armor, Armor armor2, Treasure treasures, int hitPoints, ArrayList<Fighter> fighters) {
 		super(weapon, armor, null, treasures, hitPoints);
 		this.fighters = fighters;
 	}
