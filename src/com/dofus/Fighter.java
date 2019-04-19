@@ -25,12 +25,21 @@ public class Fighter {
         this.weapon = weapon;
     }
 
-    public Armor[] getArmors() {
-        return armors;
+    public Armor[0] getArmors1() {
+        return armors[0];
+    }
+    
+    
+    public Armor[1] getArmors2() {
+        return armors[1];
     }
 
-    public void setArmors(Armor[] armors) {
-        this.armors = armors;
+    public void setArmors1(Armor armors) {
+        this.armors[0] = armors;
+    }
+    
+    public void setArmors2(Armor armors) {
+        this.armors[1] = armors;
     }
 
     public Treasure getTreasures() {
