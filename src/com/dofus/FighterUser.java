@@ -22,21 +22,21 @@ public class FighterUser extends Fighter {
 		if (RandomNumberGenerator < 0.3) 
 		{
 			this.setHitPoints(this.getHitPoints() + (5 + (int) (Math.random() * ((10 - 5) + 1))));
-			System.out.println("You regain HP! Now, you have" + this.getPoints);
+			System.out.println("You regain HP! Now, you have" + this.getPoints());
 		}
 		
 		//40% chance to regain 11-20 hp
 		else if ((RandomNumberGenerator > 0.3)||(RandomNumberGenerator < 0.7))
 		{
 			this.setHitPoints(this.getHitPoints() + (11 + (int) (Math.random() * ((20 - 11) + 1))));
-			System.out.println("You regain HP! Now, you have" + this.getPoints);
+			System.out.println("You regain HP! Now, you have" + this.getPoints());
 		}
 		
 		//20% chance to regain 21-30 hp
 		else if ((RandomNumberGenerator > 0.7)||(RandomNumberGenerator < 0.9))
 		{
 			this.setHitPoints(this.getHitPoints() + (21 + (int) (Math.random() * ((30 - 21) + 1))));
-			System.out.println("You regain HP! Now, you have" + this.getPoints);
+			System.out.println("You regain HP! Now, you have" + this.getPoints());
 		}
 		
 		//10% chance to lose 1-20 hp 
@@ -46,7 +46,7 @@ public class FighterUser extends Fighter {
 			//test Dead of the User
 			this.testDead();
 			//if the User is stil alive
-			System.out.println("You lose HP! Now, you have" + this.getPoints);
+			System.out.println("You lose HP! Now, you have" + this.getPoints());
 		}
 		treasures.setNbPotions(getNbPotions-1);
 	}
@@ -69,7 +69,7 @@ public class FighterUser extends Fighter {
 		{
 			System.out.println("Double hit points");
 			this.setHitPoints(this.getHitPoints + this.getHitPoints()*2);
-			System.out.println("You gain HP! Now, you have" +this.getPoints);
+			System.out.println("You gain HP! Now, you have" +this.getPoints());
 		}
 		
 		//Scroll - Nothing
