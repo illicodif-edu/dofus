@@ -114,34 +114,47 @@ public class FighterUser extends Fighter {
 		{
 		//initialisation of attacks for the turn
 		amountAttackF=AttackPerTurn(fighters[0].getWeapon());
+		System.out.println("The monster will fight with "+ amountAttackF+"damages per turn.");
 		amountAttackUser= AttacksPerTurn(this.getWeapon());
+		System.out.println("You will fight with "+ amountAttackUser+"damages per turn.");
 			if (testAttackF(fighters[0]))
 			{
+				System.out.println("Lucky ! You can hit the monster!");
 				//attacksoftheUser
 				takesDamagesF(amountAttackUser,fighters[0]);
+				System.out.println("The monster takes damages.");
 				//test alive for the monster
 				if (isAlive(fighters[0])) //the monster has still hp, he is going to fight in return !
 				{
+					System.out.println("The monster survives, he is going to fight in return.");
 					//attacks of the fighter f
 					takesDamagesUser(amountAttackF);
+					System.out.println("You takes damages.");
 					//test alive for the user
 					this.testDeadUser();
 					//the User is not dead 
+					System.out.println("End of the turn. You have now "+this.getHitPoints());
+					System.out.println("The monster has now :"+fighters[0].getHitPoints());
 					i=i+1;//number of turns
 				}	
 				else //the monster has no hp : dead
 				{
-					System.out.println("The Monster is dead... Good Job !");
+					System.out.println("The Monster is dead... Good Job ! End of fight.");
 					System.out.println("You take "+(i+1)+" turns to win.");
 					//have new Weapon ?
 					isBetter(fighters[0].getWeapon(),  this.getWeapon()); //pas sur du tout que cela marche, à vérifier
 					//have new Armor ? 
 					isBetter(fighters[0].getArmors1(), fighters[0].getArmors2(),this.getArmors1(),this.getArmors2());//pas sur à vérifier
 					//new Treasures ? 
+					System.out.println("Oh ! I find some treasures !");
 					this.treasure.setNbPotions(this.treasure.getNbPotions()+fighters[0].getNbPotions());
+					System.out.println("Potions :"+this.getNbPotions());
 					this.treasure.setScroll(this.treasure.getScroll()+fighters[0].getScroll());
+					System.out.println("Scroll :"+this.getScroll());
 					this.treasure.setGold(this.treasure.getGold()+fighters[0].getGold());
+					System.out.println("Gold :"+this.getGold());
 					this.treasure.setSilver(this.treasure.getSilver()+fighters[0].getSilver());
+					System.out.println("Silver :"+this.getSilver());
 					//this is the end of the fight
 					i=-1;
 					//we delete the fighter who is not alive.
