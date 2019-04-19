@@ -112,16 +112,17 @@ public class FighterUser extends Fighter {
 		//steps of a turn
 		while (i=!-1)
 		{
+		//initialisation of attacks for the turn
+		amountAttackF=AttackPerTurn(fighters[0].getWeapon());
+		amountAttackUser= AttacksPerTurn(this.getWeapon());
 			if (testAttackF(fighters[0]))
 			{
 				//attacksoftheUser
-				amountAttackUser= AttacksperTurnUser;
 				takesDamagesF(amountAttackUser,fighters[0]);
 				//test alive for the monster
 				if (isAlive(fighters[0])) //the monster has still hp, he is going to fight in return !
 				{
 					//attacks of the fighter f
-					amountAttackF=AttackperTurnF(fighters[0]);
 					takesDamagesUser(amountAttackF);
 					//test alive for the user
 					this.testDeadUser();
@@ -149,7 +150,6 @@ public class FighterUser extends Fighter {
 			}
 			else { //The user cannot attacks the fighter. But the fighter can : BOUM !
 				//attacks of the fighter f
-				amountAttackF=AttackperTurnF(fighters[0]);
 				takesDamagesUser(amountAttackF);
 				//test alive for the user
 				this.testDeadUser();
@@ -160,12 +160,8 @@ public class FighterUser extends Fighter {
 	}
 	
 	//To get the attack of a fighter f (not the user, a monster actually) per turn 
-	public int AttackperTurnF(Fighter fighterF){
-		
-	}
-	
-	//To get the attack per turn of the user
-	public int AttackperTurnUser(){
+	public int AttackPerTurn(Weapon WeaponFighter){
+		return (WeaponFighter.getAttacksPerTurn()*(WeaponFighter.getMinDamage() + (int) (Math.random() * ((WeaponFighter.getMaxDamage - WeaponFighter.getMinDamage) + 1))));
 	}
 	
 	//to set the new value of hp of a fighter f
