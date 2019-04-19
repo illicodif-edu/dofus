@@ -1,20 +1,21 @@
 package com.dofus;
 
 public class Weapon {
-  private String Type;
+  private String Name;
   private int attacksPerTurn;
   private int minDamage;
   private int maxDamage;
   
-  public Weapon(String Type, int attacksPerTurn, int minDamage, int maxDamage) {
-        this.Type = Type;
+  
+  public Weapon(String Name, int attacksPerTurn, int minDamage, int maxDamage, ) {
+        this.Name = Name;
         this.attacksPerTurn = attacksPerTurn;
         this.minDamage = minDamage;
         this.maxDamage = maxDamage;
     }
 
-    public String getType() {
-        return Type;
+    public String getName() {
+        return Name;
     }
 
     public int getAttacksPerTurn() {
@@ -28,9 +29,9 @@ public class Weapon {
     public int getMaxDamage() {
         return maxDamage;
     }
-// These sets methode are not very useful for the time, it will be if we made an expansion
-    public void setType(String Type) {
-        this.Type = Type;
+
+    public void setName(String Name) {
+        this.Name = Name;
     }
 
     public void setAttacksPerTurn(int attacksPerTurn) {
@@ -47,7 +48,7 @@ public class Weapon {
     
     public boolean isRecuperable() {
 //this method tests if the user can or cannot take weapons of the monster after winning the fight
-     return !(Type.equals("hands")|| Type.equals("venom")|| Type.equals("claws")|| Type.equals("lightning bolts")); 
+     return !(Name.equals("hands")|| Name.equals("venom")|| Name.equals("claws")|| Name.equals("lightning bolts")); 
 //if the weapon is hands,or venom, or claws, or lightning blots, then the user cannot take weapons
     }
 
