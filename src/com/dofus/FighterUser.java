@@ -8,7 +8,7 @@ public class FighterUser extends Fighter {
 	// ArrayList of fighters
 	private ArrayList<Fighter> fighters;
 
-	public FighterUser(Weapon weapon, Armor armor, Armor armor2, Treasure treasures, int hitPoints, ArrayList<Fighter> fighters) {
+	public FighterUser(Weapon weapon, Armor armor, Armor armor2, ArrayList<Treasure> treasures, int hitPoints, ArrayList<Fighter> fighters) {
 		super(weapon, armor, null, treasures, hitPoints);
 		this.fighters = fighters;
 	}
@@ -95,6 +95,23 @@ public class FighterUser extends Fighter {
 	// To fight
 	public void fight() {
 		System.out.println("I fight");
+	}
+	
+	//isBetterMethods for Weapon after fight
+	public void isBetterWeapon(Weapon WeaponOfMonster, Weapon WeaponOfUser) {
+		if ((WeaponOfMonster.getAttacksPerTurn()*(WeaponOfMonster.getMaxDamage()+WeaponOfMonster.getMinDamage())/2)>(WeaponOfUser.getAttacksPerTurn()*(WeaponOfUser.getMaxDamage()+WeaponOfUser.getMinDamage())/2))
+		{
+			//it is time to change the Weapon of the User by the Weapon of the Monster
+			WeaponOfUser.setType(WeaponOfMonster.getType());
+			WeaponOfUser.setAttacksPerTurn(WeaponOfMonster.getAttacksPerTurn());
+			WeaponOfUser.setMaxDamage(WeaponOfMonster.getMaxDamage());
+			WeaponOfUser.setMinDamage(WeaponOfMonster.getMinDamage());
+		}
+	}
+	
+	//is BetterMethods for Armor after fight 
+	public void isBetterArmor(Armor ArmorofMMonster) {
+		
 	}
 
 	// To rest
