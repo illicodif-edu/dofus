@@ -52,7 +52,7 @@ public class FighterUser extends Fighter {
 	}
 	
 	public void testDead(){
-		if (this.getHitPoints()<0)
+		if (this.getHitPoints()<1)
 		{
 			System.out.println("You lose HP! Actually, you are dead... Play again");
 			this.quit();
