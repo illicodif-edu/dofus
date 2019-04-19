@@ -115,46 +115,62 @@ public class FighterUser extends Fighter {
 		//initialisation of attacks for the turn
 		amountAttackF=AttackPerTurn(fighters[0].getWeapon());
 		System.out.println("The monster will fight with "+ amountAttackF+"damages per turn.");
+		delay(1); // 1 second of break
 		amountAttackUser= AttacksPerTurn(this.getWeapon());
 		System.out.println("You will fight with "+ amountAttackUser+"damages per turn.");
+		delay(1); // 1 second of break
 			if (testAttackF(fighters[0]))
 			{
 				System.out.println("Lucky ! You can hit the monster!");
+				delay(1); // 1 second of break
 				//attacksoftheUser
 				takesDamagesF(amountAttackUser,fighters[0]);
+				delay(1); // 1 second of break
 				System.out.println("The monster takes damages.");
+				delay(1); // 1 second of break
 				//test alive for the monster
 				if (isAlive(fighters[0])) //the monster has still hp, he is going to fight in return !
 				{
 					System.out.println("The monster survives, he is going to fight in return.");
+					delay(1); // 1 second of break
 					//attacks of the fighter f
 					takesDamagesUser(amountAttackF);
 					System.out.println("You takes damages.");
+					delay(1); // 1 second of break
 					//test alive for the user
 					this.testDeadUser();
 					//the User is not dead 
 					System.out.println("End of the turn. You have now "+this.getHitPoints());
+					delay(1); // 1 second of break
 					System.out.println("The monster has now :"+fighters[0].getHitPoints());
+					delay(1); // 1 second of break
 					i=i+1;//number of turns
 				}	
 				else //the monster has no hp : dead
 				{
 					System.out.println("The Monster is dead... Good Job ! End of fight.");
+					delay(1); // 1 second of break
 					System.out.println("You take "+(i+1)+" turns to win.");
+					delay(1); // 1 second of break
 					//have new Weapon ?
 					isBetter(fighters[0].getWeapon(),  this.getWeapon()); //pas sur du tout que cela marche, à vérifier
 					//have new Armor ? 
 					isBetter(fighters[0].getArmors1(), fighters[0].getArmors2(),this.getArmors1(),this.getArmors2());//pas sur à vérifier
 					//new Treasures ? 
 					System.out.println("Oh ! I find some treasures !");
+					delay(1); // 1 second of break
 					this.treasure.setNbPotions(this.treasure.getNbPotions()+fighters[0].getNbPotions());
 					System.out.println("Potions :"+this.getNbPotions());
+					delay(1); // 1 second of break
 					this.treasure.setScroll(this.treasure.getScroll()+fighters[0].getScroll());
 					System.out.println("Scroll :"+this.getScroll());
+					delay(1); // 1 second of break
 					this.treasure.setGold(this.treasure.getGold()+fighters[0].getGold());
 					System.out.println("Gold :"+this.getGold());
+					delay(1); // 1 second of break
 					this.treasure.setSilver(this.treasure.getSilver()+fighters[0].getSilver());
 					System.out.println("Silver :"+this.getSilver());
+					delay(1); // 1 second of break
 					//this is the end of the fight
 					i=-1;
 					//we delete the fighter who is not alive.
@@ -261,5 +277,14 @@ public class FighterUser extends Fighter {
 			this.fight();
 		}
 	}
+					   
+	public void delay(int i){ // to make a pause of i seconds
+		try {
+    			Thread.sleep(i*1000);    //i seconds .
+		} 
+		catch(InterruptedException ex) {
+    			Thread.currentThread().interrupt();
+		}
+					   }
 }
   
