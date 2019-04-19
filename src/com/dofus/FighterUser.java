@@ -99,10 +99,16 @@ public class FighterUser extends Fighter {
 	
 	//isBetterMethods for Weapon after fight
 	public void isBetterWeapon(Weapon WeaponOfMonster, Weapon WeaponOfUser) {
-		if ((WeaponOfMonster.getAttacksPerTurn()*(WeaponOfMonster.getMaxDamage()+WeaponOfMonster.getMinDamage())/2)>(WeaponOfUser.getAttacksPerTurn()*(WeaponOfUser.getMaxDamage()+WeaponOfUser.getMinDamage())/2))
+		
+		// to get the average of damage of weapons 
+		averageWeaponOfMonster=WeaponOfMonster.getAttacksPerTurn()*(WeaponOfMonster.getMaxDamage()+WeaponOfMonster.getMinDamage())/2;
+		averageWeaponOfUser=WeaponOfUser.getAttacksPerTurn()*(WeaponOfUser.getMaxDamage()+WeaponOfUser.getMinDamage())/2;
+		
+		//test of weapon : comparaison of averageWeapon and test of the type of weapon (is Recuperable by the user or not)
+		if ((averageWeaponOfMonster>averageWeaponOfUser)||(WeaponOfMonster.isRecuperable()))
 		{
 			//it is time to change the Weapon of the User by the Weapon of the Monster
-			WeaponOfUser.setType(WeaponOfMonster.getType());
+			WeaponOfUser.seName(WeaponOfMonster.getName());
 			WeaponOfUser.setAttacksPerTurn(WeaponOfMonster.getAttacksPerTurn());
 			WeaponOfUser.setMaxDamage(WeaponOfMonster.getMaxDamage());
 			WeaponOfUser.setMinDamage(WeaponOfMonster.getMinDamage());
