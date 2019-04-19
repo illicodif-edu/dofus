@@ -18,7 +18,7 @@ public class Main{
 		Weapon lightningBolts= new Weapon("lighting bolts", 1,21,40);
 		
 		//Armor(String Name, int protection, Boolean isRecuperable,int Type)
-		Armor leatherArmor = new Armor("Leather Armor", 10, false, 1)
+	
 		Armor leatherArmor = new Armor("Leather Armor",10,true,1);
 		Armor chainMail = new Armor("Chain Mail",12,true,1);
 		Armor hide = new Armor("Hide",14,false,1);
