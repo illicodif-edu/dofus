@@ -8,7 +8,7 @@ public class FighterUser extends Fighter {
 	// ArrayList of fighters
 	private ArrayList<Fighter> fighters;
 
-	public FighterUser(Weapon weapon, Armor armor, Armor armor2, ArrayList<Treasure> treasures, int hitPoints, ArrayList<Fighter> fighters) {
+	public FighterUser(Weapon weapon, Armor armor, Armor armor2, Treasure treasure, int hitPoints, ArrayList<Fighter> fighters) {
 		super(weapon, armor, armor2, treasures, hitPoints);
 		this.fighters = fighters;
 	}
@@ -48,7 +48,7 @@ public class FighterUser extends Fighter {
 			//if the User is stil alive
 			System.out.println("You lose HP! Now, you have" + this.getPoints());
 		}
-		treasures.setNbPotions(getNbPotions-1);
+		this.treasure.setNbPotions(this.treasure.getNbPotions()-1);
 	}
 		
 	//To use treasure=scroll
@@ -137,7 +137,10 @@ public class FighterUser extends Fighter {
 					//have new Armor ? 
 					isBetter(fighters[0].getArmors1(), fighters[0].getArmors2(),this.getArmors1(),this.getArmors2());//pas sur à vérifier
 					//new Treasures ? 
-					
+					this.treasure.setNbPotions(this.treasure.getNbPotions()+fighters[0].getNbPotions());
+					this.treasure.setScroll(this.treasure.getScroll()+fighters[0].getScroll());
+					this.treasure.setGold(this.treasure.getGold()+fighters[0].getGold());
+					this.treasure.setSilver(this.treasure.getSilver()+fighters[0].getSilver());
 					//this is the end of the fight
 					i=-1;
 					//we delete the fighter who is not alive.
@@ -158,6 +161,7 @@ public class FighterUser extends Fighter {
 	
 	//To get the attack of a fighter f (not the user, a monster actually) per turn 
 	public int AttackperTurnF(Fighter fighterF){
+		
 	}
 	
 	//To get the attack per turn of the user
