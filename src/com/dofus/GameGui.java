@@ -1,5 +1,6 @@
 package com.dofus;
 
+
 import java.util.ArrayList;
 import javax.swing.*;
 import java.awt.*;
@@ -12,6 +13,7 @@ public class GameGui extends JFrame {
 
 	private FighterUser user; // The user
 	private JLabel messageLabel; // Add a message
+	private JLabel userStatus;
 
 	// The buttons
 	private JButton rest;
@@ -64,9 +66,19 @@ public class GameGui extends JFrame {
 		// Create the button Listener class
 		ButtonListener buttonL = new ButtonListener();
 
-		// Create the label, text field, and radio buttons.
+		// Create the label, text field, and buttons.
 		messageLabel = new JLabel("<html><div>Bienvenue dans (presque) Dofus</div></html>");
 		messageLabel.setFont(new Font("Serif", Font.BOLD, 19));
+		
+		userStatus = new JLabel("<html>User Summary"
+					+ "<div>Your HP: "+user.getHitPoints()+"<div><br>"
+					+ "<div>Your armor is: "+user.getArmors()[0].getName()+" ("+user.getArmors()[0].getProtection()+")<div><br>"
+					+ "<div>Your shield (if you have one) is: "+user.getArmors()[1].getName()+" ("+user.getArmors()[1].getProtection()+")<div><br>"
+					+ "<div>Your weapon is: "+user.getWeapon().getType()+" with: "+user.getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> <div>"
+					+ "<div>and: "+user.getWeapon().getMinDamage()+" of minimum damage and: "+user.getWeapon().getMaxDamage()+" of maxmimum damage<div></html>"
+				);
+		userStatus.setFont(new Font("Serif", Font.BOLD, 19));
+		userStatus.setForeground(Color.red);
 		
 		
 		// Create the buttons
@@ -94,11 +106,13 @@ public class GameGui extends JFrame {
 		potionScroll.addActionListener(buttonL);
 		fight.addActionListener(buttonL);
 
+		
 		messageLabel.setBounds(340, 10, 150, 50);
-		quit.setBounds(450, 200, 150, 50);
-		potionScroll.setBounds(450, 140, 150, 50);
-		rest.setBounds(250, 200, 150, 50);
-		fight.setBounds(250, 140, 150, 50);
+		userStatus.setBounds(10,0,400,300);
+		quit.setBounds(450, 400, 150, 50);
+		potionScroll.setBounds(450, 340, 150, 50);
+		rest.setBounds(250, 400, 150, 50);
+		fight.setBounds(250, 340, 150, 50);
 
 		// Add the components to the main panel.
 
@@ -107,6 +121,7 @@ public class GameGui extends JFrame {
 		add(potionScroll);
 		add(fight);
 		add(messageLabel);
+		add(userStatus);
 
 	}
 
