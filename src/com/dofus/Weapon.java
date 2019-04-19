@@ -46,7 +46,7 @@ public class Weapon {
         this.maxDamage = maxDamage;
     }
     
-    public boolean isRecuperable() {
+    public Boolean isRecuperable() {
 //this method tests if the user can or cannot take weapons of the monster after winning the fight
      return !(Name.equals("hands")|| Name.equals("venom")|| Name.equals("claws")|| Name.equals("lightning bolts")); 
 //if the weapon is hands,or venom, or claws, or lightning blots, then the user cannot take weapons
