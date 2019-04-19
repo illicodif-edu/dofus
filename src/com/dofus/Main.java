@@ -20,6 +20,7 @@ public class Main{
 		//Armor(String Name, int protection, Boolean isRecuperable,int Type)
 	
 		Armor leatherArmor = new Armor("Leather Armor",10,true,1);
+		Armor noShield = new Armor("no Shield",0,false,2);
 		Armor chainMail = new Armor("Chain Mail",12,true,1);
 		Armor hide = new Armor("Hide",14,false,1);
 		Armor skin = new Armor("Skin",10,false,1);
@@ -50,7 +51,7 @@ public class Main{
 		fighters.add(wizard);
 		
 		
-		FighterUser user = new FighterUser(swortStartUser, leatherArmor, null, new Treasure(2, 1, 0, 0), 50, fighters);
+		FighterUser user = new FighterUser(swortStartUser, leatherArmor, noShield, new Treasure(2, 1, 0, 0), 50, fighters);
 		new GameGui(user);
 		
 	}
