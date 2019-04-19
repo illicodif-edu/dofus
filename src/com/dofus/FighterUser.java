@@ -106,6 +106,54 @@ public class FighterUser extends Fighter {
 	// To fight
 	public void fight() {
 		System.out.println("I fight");
+		int amountAttackUser;
+		int amountAttackF; //fighter f
+		int i=0; //indice for the loop while
+		//steps of a turn
+		while (i=!-1)
+		{
+			if (testAttackF(fighters[0]))
+			{
+				//attacksoftheUser
+				amountAttackUser= AttacksperTurnUser;
+				takesDamagesF(amountAttackUser,fighters[0]);
+				//test alive for the monster
+				if (isAlive(fighters[0])) //the monster has still hp, he is going to fight in return !
+				{
+					//attacks of the fighter f
+					amountAttackF=AttackperTurnF(fighters[0]);
+					takesDamagesUser(amountAttackF);
+					//test alive for the user
+					this.testDeadUser();
+					//the User is not dead 
+					i=i+1;//number of turns
+				}	
+				else //the monster has no hp : dead
+				{
+					System.out.println("The Monster is dead... Good Job !");
+					System.out.println("You take "+(i+1)+" turns to win.);
+					//have new Weapon ?
+					isBetter(fighters[0].getWeapon(),  this.getWeapon()); //pas sur du tout que cela marche, à vérifier
+					//have new Armor ? 
+					isBetter(fighters[0].getArmors1(), fighters[0].getArmors2(),this.getArmors1(),this.getArmors2());//pas sur à vérifier
+					//new Treasures ? 
+					
+					//this is the end of the fight
+					i=-1;
+					//we delete the fighter who is not alive.
+					fighters.remove(0);
+				}
+			}
+			else { //The user cannot attacks the fighter. But the fighter can : BOUM !
+				//attacks of the fighter f
+				amountAttackF=AttackperTurnF(fighters[0]);
+				takesDamagesUser(amountAttackF);
+				//test alive for the user
+				this.testDeadUser();
+				//the User is not dead 
+				i=i+1;//number of turns			
+			}
+		}
 	}
 	
 	//To get the attack of a fighter f (not the user, a monster actually) per turn 
@@ -124,10 +172,10 @@ public class FighterUser extends Fighter {
 	public void takesDamagesUser (int hitDamages){
 	}
 	// to test the possibility of attack the fighter f (in function of his armor)
-	public void testAttacksF(Fighter fighterF){
+	public Boolean isAttacksF(Fighter fighterF){
 	}
 	//isBetterMethods for Weapon after fight
-	public void isBetterWeapon(Weapon WeaponOfMonster, Weapon WeaponOfUser) {
+	public void isBetterWeapon(Weapon WeaponOfMonster, Weapon WeaponOfUser) { // si on met directement les fighters en variable cela peut optimiser le programme
 		
 		// to get the average of damage of weapons 
 		averageWeaponOfMonster=WeaponOfMonster.getAttacksPerTurn()*(WeaponOfMonster.getMaxDamage()+WeaponOfMonster.getMinDamage())/2;
@@ -146,7 +194,7 @@ public class FighterUser extends Fighter {
 	}
 	
 	//is BetterMethods for Armor after fight 
-	public void isBetterArmor(Armor ArmorOfMonster1, Armor ArmorOfMonster2, Armor ArmorOfUser1, Armor ArmorOfUser2 ) {
+	public void isBetterArmor(Armor ArmorOfMonster1, Armor ArmorOfMonster2, Armor ArmorOfUser1, Armor ArmorOfUser2 ) {// si on met directement les fighters en variable cela peut optimiser le programme
 		// Armor Of Monster 1 and Armor Of User 1 must be type1 (where type is an Attribut from Armor Class)
 		// Armor Of Monster 2 and Armor Of User 2 must be type2 (where type is an Attribut from Armor Class)
 		
