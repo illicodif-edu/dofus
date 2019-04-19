@@ -83,6 +83,7 @@ public class FighterUser extends Fighter {
 		System.out.println("I left the game");
 		System.exit(0);
 	}
+	
 	public void testDeadUser(){
 		//this function could be replace by isAlive method 
 		if (this.getHitPoints()<1)
@@ -107,6 +108,24 @@ public class FighterUser extends Fighter {
 		System.out.println("I fight");
 	}
 	
+	//To get the attack of a fighter f (not the user, a monster actually) per turn 
+	public int AttackperTurnF(Fighter fighterF){
+	}
+	
+	//To get the attack per turn of the user
+	public int AttackperTurnUser(){
+	}
+	
+	//to set the new value of hp of a fighter f
+	public void takesDamagesF(int hitDamages, Fighter fighterF){
+	}
+	
+	// to set the new value of hp of the user 
+	public void takesDamagesUser (int hitDamages){
+	}
+	// to test the possibility of attack the fighter f (in function of his armor)
+	public void testAttacksF(Fighter fighterF){
+	}
 	//isBetterMethods for Weapon after fight
 	public void isBetterWeapon(Weapon WeaponOfMonster, Weapon WeaponOfUser) {
 		
