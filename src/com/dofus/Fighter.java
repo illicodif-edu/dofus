@@ -6,10 +6,10 @@ public class Fighter {
     private String name;
     private Weapon weapon;
     private Armor[] armors = new Armor[2];
-    private ArrayList<Treasure> treasures;
+    private Treasure treasures;
     private int hitPoints;
-
-    public Fighter(Weapon weapon, Armor armor1, Armor armor2, ArrayList<Treasure> treasures, int hitPoints) {
+    
+    public Fighter(Weapon weapon, Armor armor1, Armor armor2, Treasure treasures, int hitPoints) {
         this.weapon = weapon;
         this.armors[0] = armor1;
         this.armors[1] = armor2;
@@ -33,7 +33,7 @@ public class Fighter {
         this.armors = armors;
     }
 
-    public ArrayList<Treasure> getTreasures() {
+    public Treasure getTreasures() {
         return treasures;
     }
 
