@@ -105,7 +105,7 @@ public class FighterUser extends Fighter {
 		averageWeaponOfUser=WeaponOfUser.getAttacksPerTurn()*(WeaponOfUser.getMaxDamage()+WeaponOfUser.getMinDamage())/2;
 		
 		//test of weapon : comparaison of averageWeapon and test of the type of weapon (is Recuperable by the user or not)
-		if ((averageWeaponOfMonster>averageWeaponOfUser)||(WeaponOfMonster.isRecuperable()))
+		if ((averageWeaponOfMonster>averageWeaponOfUser)&&(WeaponOfMonster.isRecuperable()))
 		{
 			//it is time to change the Weapon of the User by the Weapon of the Monster
 			WeaponOfUser.seName(WeaponOfMonster.getName());
@@ -117,12 +117,27 @@ public class FighterUser extends Fighter {
 	}
 	
 	//is BetterMethods for Armor after fight 
-	public void isBetterArmor(Armor ArmorofMMonster) {
+	public void isBetterArmor(Armor ArmorOfMonster1, Armor ArmorOfMonster2, Armor ArmorOfUser1, Armor ArmorOfUser2 ) {
+		// Armor Of Monster 1 and Armor Of User 1 must be type1 (where type is an Attribut from Armor Class)
+		// Armor Of Monster 2 and Armor Of User 2 must be type2 (where type is an Attribut from Armor Class)
 		
+	//test Armor Type 1 : if protection is better + is Recuperable (TRUE)	
+		if ((ArmorOfMonster1.getProtection()>ArmorOfUser1.getProtection())&&(ArmorOfMonster1.getIsRecuperable()))
+		{
+			ArmorOfUser1.setName(ArmorOfMonster1.getName());
+			ArmorOfUser1.setProtection(ArmorOfMonster1.getProtection());
+			System.out.println("I change my Armor. I am safe now, I hope... !");
+		}
+	//test Armor Type 2 : if protection is better + is Recuperable (TRUE)	
+		if ((ArmorOfMonster2.getProtection()>ArmorOfUser2.getProtection())&&(ArmorOfMonster2.getIsRecuperable()))
+		{
+			ArmorOfUser2.setName(ArmorOfMonster2.getName());
+			ArmorOfUser2.setProtection(ArmorOfMonster2.getProtection());
+			System.out.println("I change my Armor. I am safe now, I hope... !");
+		}
 	}
 	
 	// to get the total of the protection of armor
-	
 	public int getTotalArmor(Armor armorOfFighter1, Armor armorOfFighter2)
 		// armor of fighter 1 must be type1 (where type is an Attribut from Armor Class), armor of fighter 2 must be type2
 	{
