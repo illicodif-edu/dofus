@@ -37,7 +37,7 @@ public class Fighter {
         return treasures;
     }
 
-    public void setTreasures(ArrayList<Treasure> treasures) {
+    public void setTreasures(Treasure treasures) {
         this.treasures = treasures;
     }
 
