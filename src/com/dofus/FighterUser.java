@@ -120,7 +120,15 @@ public class FighterUser extends Fighter {
 	public void isBetterArmor(Armor ArmorofMMonster) {
 		
 	}
-
+	
+	// to get the total of the protection of armor
+	
+	public int getTotalArmor(Armor armorOfFighter1, Armor armorOfFighter2)
+		// armor of fighter 1 must be type1 (where type is an Attribut from Armor Class), armor of fighter 2 must be type2
+	{
+		return armorOfFighter1.getProtection()+armorOfFighter2.getProtection();
+	}
+	
 	// To rest
 	public void rest() {
 		System.out.println("I sleep");
