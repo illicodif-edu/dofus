@@ -131,7 +131,7 @@ public class FighterUser extends Fighter {
 				else //the monster has no hp : dead
 				{
 					System.out.println("The Monster is dead... Good Job !");
-					System.out.println("You take "+(i+1)+" turns to win.);
+					System.out.println("You take "+(i+1)+" turns to win.");
 					//have new Weapon ?
 					isBetter(fighters[0].getWeapon(),  this.getWeapon()); //pas sur du tout que cela marche, à vérifier
 					//have new Armor ? 
