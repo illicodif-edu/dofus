@@ -106,6 +106,7 @@ public class FighterUser extends Fighter {
 			WeaponOfUser.setAttacksPerTurn(WeaponOfMonster.getAttacksPerTurn());
 			WeaponOfUser.setMaxDamage(WeaponOfMonster.getMaxDamage());
 			WeaponOfUser.setMinDamage(WeaponOfMonster.getMinDamage());
+			System.out.println("I change my Weapon. I am stronger now !");
 		}
 	}
 	
