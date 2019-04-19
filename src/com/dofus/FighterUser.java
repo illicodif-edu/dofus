@@ -9,7 +9,7 @@ public class FighterUser extends Fighter {
 	private ArrayList<Fighter> fighters;
 
 	public FighterUser(Weapon weapon, Armor armor, Armor armor2, ArrayList<Treasure> treasures, int hitPoints, ArrayList<Fighter> fighters) {
-		super(weapon, armor, null, treasures, hitPoints);
+		super(weapon, armor, armor2, treasures, hitPoints);
 		this.fighters = fighters;
 	}
 	
