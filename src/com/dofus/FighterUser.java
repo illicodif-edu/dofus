@@ -44,21 +44,13 @@ public class FighterUser extends Fighter {
 		{
 			this.setHitPoints(this.getHitPoints() - (1 + (int) (Math.random() * ((20 - 1) + 1))));
 			//test Dead of the User
-			this.testDead();
+			this.testDeadUser();
 			//if the User is stil alive
 			System.out.println("You lose HP! Now, you have" + this.getPoints());
 		}
 		treasures.setNbPotions(getNbPotions-1);
 	}
-	
-	public void testDead(){
-		if (this.getHitPoints()<1)
-		{
-			System.out.println("You lose HP! Actually, you are dead... Play again");
-			this.quit();
-		}
-	}
-	
+		
 	//To use treasure=scroll
 	public void utilizeScroll()
 	{
@@ -91,7 +83,25 @@ public class FighterUser extends Fighter {
 		System.out.println("I left the game");
 		System.exit(0);
 	}
-
+	public void testDeadUser(){
+		//this function could be replace by isAlive method 
+		if (this.getHitPoints()<1)
+		{
+			System.out.println("You lose HP! Actually, you are dead... Play again");
+			this.quit();
+		}
+	}
+	
+	public Boolean isAlive(Fighter fighterF){
+		if (fightF.getHitPoints()<1)
+		// if HP <1, it is the same as HP of F'<0 (because HP is int, not double and if HP=0, the fighter is also dead)
+		{
+			return true; 
+		}
+		else {
+			return false;	
+		}
+	}
 	// To fight
 	public void fight() {
 		System.out.println("I fight");
