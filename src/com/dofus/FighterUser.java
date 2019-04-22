@@ -10,9 +10,14 @@ public class FighterUser extends Fighter {
 	// ArrayList of fighters
 	private ArrayList<Fighter> fighters;
 
+	private boolean stateRest = false;
 	public FighterUser(Weapon weapon, Armor armor, Armor armor2, Treasure treasure, int hitPoints, ArrayList<Fighter> fighters) {
 		super("MOI",weapon, armor, armor2, treasure, hitPoints);
 		this.fighters = fighters;
+	}
+	
+	public boolean getStateRest() {
+		return stateRest;
 	}
 	
 	//To use treasure=potion
@@ -189,6 +194,7 @@ public class FighterUser extends Fighter {
 					i=-1;
 					//we delete the fighter who is not alive.
 					fighters.remove(0);
+					stateRest =false;
 					return 1;
 				}
 			}
@@ -284,7 +290,7 @@ public class FighterUser extends Fighter {
 	}
 	
 	// To rest
-	public boolean rest() {
+	public void rest() {
 		System.out.println("I sleep");
 		// 50% chances to regain hp
 		if (Math.random() < 0.5) {
@@ -296,7 +302,7 @@ public class FighterUser extends Fighter {
 		else {
 			this.fight();
 		}
-		return true;
+		stateRest = true;
 	}
 					   
 	public void delay(int i){ // to make a pause of i seconds
@@ -304,8 +310,8 @@ public class FighterUser extends Fighter {
     			Thread.sleep(i*1000);    //i seconds .
 		} 
 		catch(InterruptedException ex) {
-    			System.out.println("BUG ON DELAY");;
+    			System.out.println("BUG SUR DELAY");;
 		}
-	 }
+					   }
 }
   
