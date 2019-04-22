@@ -9,12 +9,17 @@ public class Fighter {
     private Treasure treasures;
     private int hitPoints;
     
-    public Fighter(Weapon weapon, Armor armor1, Armor armor2, Treasure treasures, int hitPoints) {
+    public Fighter(String name,Weapon weapon, Armor armor1, Armor armor2, Treasure treasures, int hitPoints) {
         this.weapon = weapon;
+        this.name = name;
         this.armors[0] = armor1;
         this.armors[1] = armor2;
         this.treasures = treasures;
         this.hitPoints = hitPoints;
+    }
+    
+    public String getName() {
+    	return name;
     }
 
     public Weapon getWeapon() {
