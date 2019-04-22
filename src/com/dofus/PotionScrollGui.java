@@ -108,14 +108,18 @@ public class PotionScrollGui extends JFrame {
 	}
 
 	private class ButtonListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-
+		public void actionPerformed(ActionEvent e) {			
 			// Test on the button to trigger the right function
 			if (e.getSource() == potion) {
+				
 				user.utilizePotion();
+				
 			}
 			if (e.getSource() == scroll) {
+				
 				user.utilizeScroll();
+					
+				
 			}
 			if (e.getSource() == back) {
 				dispose();
