@@ -20,6 +20,7 @@ public class Main{
 		//Armor(String Name, int protection, Boolean isRecuperable,int Type)
 	
 		Armor leatherArmor = new Armor("Leather Armor",10,true,1);
+		Armor noArmor = new Armor("No Armor", 0,false,1);
 		Armor noShield = new Armor("no Shield",0,false,2);
 		Armor chainMail = new Armor("Chain Mail",12,true,1);
 		Armor hide = new Armor("Hide",14,false,1);
@@ -30,14 +31,14 @@ public class Main{
 		Armor heavyShield = new Armor("Heavy Shield",4,true,2);
 		Armor magicAura = new Armor("Magic Aura",15,false,1);
 		
-		Fighter orc = new Fighter(dagger, chainMail, null, new Treasure(1, 0, 1,0), 22);
-		Fighter nestOfSnakes = new Fighter(venom, null, null, new Treasure(1, 0, 0,0), 12);
-		Fighter troll = new Fighter(hands, hide, null, new Treasure(2, 0, 1, 1), 35);
-		Fighter berserker = new Fighter(swordBerserker, skin, shield, new Treasure(1, 0, 0, 1), 28);
-		Fighter ninja = new Fighter(superSword, chainMail, null, new Treasure(2, 1, 0, 0), 40);
-		Fighter dragon = new Fighter(claws, skin, null, new Treasure(0, 1, 0, 3), 25);
-		Fighter doppleganger = new Fighter(null, null, heavyShield, null, 0);
-		Fighter wizard = new Fighter(lightningBolts, magicAura, null, new Treasure(0, 0, 3, 0), 150);
+		Fighter orc = new Fighter("Orc",dagger, chainMail, noShield, new Treasure(1, 0, 1,0), 22);
+		Fighter nestOfSnakes = new Fighter("Nest of Snakes",venom, noArmor, noShield, new Treasure(1, 0, 0,0), 12);
+		Fighter troll = new Fighter("Troll",hands, hide, noShield, new Treasure(2, 0, 1, 1), 35);
+		Fighter berserker = new Fighter("Berserker",swordBerserker, skin, shield, new Treasure(1, 0, 0, 1), 28);
+		Fighter ninja = new Fighter("Ninja",superSword, chainMail, noShield, new Treasure(2, 1, 0, 0), 40);
+		Fighter dragon = new Fighter("Dragon",claws, skin, noShield, new Treasure(0, 1, 0, 3), 25);
+		Fighter doppleganger = new Fighter("Dopple Ganger",null, null, heavyShield, null, 0);
+		Fighter wizard = new Fighter("The wizard",lightningBolts, magicAura, null, new Treasure(0, 0, 3, 0), 150);
 		
 		ArrayList<Fighter> fighters = new ArrayList<Fighter>();
 		
