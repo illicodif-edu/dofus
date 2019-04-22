@@ -15,7 +15,7 @@ public class GameGui extends JFrame {
 	private JLabel messageLabel; // Add a message
 	private JLabel userStatus;
 
-	private boolean stateRest = false;
+	
 
 	// The buttons
 	private JButton rest;
@@ -130,6 +130,7 @@ public class GameGui extends JFrame {
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			int state;
+			
 
 			// Test on the button to trigger the right function
 			if (e.getSource() == potionScroll) {
@@ -137,10 +138,11 @@ public class GameGui extends JFrame {
 				new PotionScrollGui(user);
 			}
 			if (e.getSource() == rest) {
-				if(stateRest == false) {
+				if(user.getStateRest() == false) {
 				
-					stateRest = user.rest();
+					user.rest();
 				}
+				
 			}
 			if (e.getSource() == quit) {
 				user.quit();
