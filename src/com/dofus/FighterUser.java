@@ -2,6 +2,8 @@ package com.dofus;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 
 public class FighterUser extends Fighter {
 
@@ -9,13 +11,14 @@ public class FighterUser extends Fighter {
 	private ArrayList<Fighter> fighters;
 
 	public FighterUser(Weapon weapon, Armor armor, Armor armor2, Treasure treasure, int hitPoints, ArrayList<Fighter> fighters) {
-		super(weapon, armor, armor2, treasure, hitPoints);
+		super("MOI",weapon, armor, armor2, treasure, hitPoints);
 		this.fighters = fighters;
 	}
 	
 	//To use treasure=potion
 	public void utilizePotion()
 	{
+		if(this.getTreasures().getNbPotions() >= 1) {
 		double RandomNumberGenerator= (Math.random()*((1-0)+1));
 		
 		//30% chance to regain 5-10 hp
@@ -40,7 +43,7 @@ public class FighterUser extends Fighter {
 		}
 		
 		//10% chance to lose 1-20 hp 
-		else (RandomNumberGenerator > 0.9)
+		else
 		{
 			this.setHitPoints(this.getHitPoints() - (1 + (int) (Math.random() * ((20 - 1) + 1))));
 			//test Dead of the User
@@ -48,12 +51,19 @@ public class FighterUser extends Fighter {
 			//if the User is still alive
 			System.out.println("You lose HP! Now, you have" + this.getHitPoints());
 		}
-		this.treasure.setNbPotions(this.treasure.getNbPotions()-1);
+		
+		this.getTreasures().setNbPotions(this.getTreasures().getNbPotions()-1);
+		}
+		else {
+			System.out.println("I don't have any potion");
+		}
 	}
+		
 		
 	//To use treasure=scroll
 	public void utilizeScroll()
 	{
+		if(this.getTreasures().getScroll() >= 1) {
 		int RandomNumberGenerator= (1 + (int) (Math.random()*((3-1)+1)));
 		
 		//Scroll - Double hit points
@@ -76,7 +86,11 @@ public class FighterUser extends Fighter {
 			System.out.println("Actually, you are dead... Play again");
 			this.quit();
 		}
-		this.treasure.setScroll(getScroll-1);
+		this.getTreasures().setScroll(this.getTreasures().getScroll()-1);
+		}
+		else {
+			System.out.println("I don't have any scroll");
+		}
 	}
 	// To quit
 	public void quit() {
@@ -97,84 +111,85 @@ public class FighterUser extends Fighter {
 		if (fighterF.getHitPoints()<1)
 		// if HP <1, it is the same as HP of F'<0 (because HP is int, not double and if HP=0, the fighter is also dead)
 		{
-			return true; 
+			return false; 
 		}
 		else {
-			return false;	
+			return true;	
 		}
 	}
 	// To fight
-	public void fight() {
+	public int fight() {
 		System.out.println("I fight");
 		int amountAttackUser;
 		int amountAttackF; //fighter f
-		int i=0; //indice for the loop while
+		int i=0; // indice for the loop while
 		//steps of a turn
 		while (i>=0)
 		{
-		//initialisation of attacks for the turn
-		amountAttackF=AttackPerTurn(fighters[0].getWeapon());
+		// initialisation of attacks for the turn
+		amountAttackF=attackPerTurn(fighters.get(0).getWeapon());
 		System.out.println("The monster will fight with "+ amountAttackF+"damages per turn.");
 		delay(1); // 1 second of break
-		amountAttackUser= AttacksPerTurn(this.getWeapon());
+		amountAttackUser= this.attackPerTurn(this.getWeapon());
 		System.out.println("You will fight with "+ amountAttackUser+"damages per turn.");
 		delay(1); // 1 second of break
-			if (testAttackF(fighters[0]))
+			if (isAttacksF(fighters.get(0)))
 			{
 				System.out.println("Lucky ! You can hit the monster!");
 				delay(1); // 1 second of break
 				//attacksoftheUser
-				takesDamagesF(amountAttackUser,fighters[0]);
+				takesDamagesF(amountAttackUser,fighters.get(0));
 				delay(1); // 1 second of break
 				System.out.println("The monster takes damages.");
 				delay(1); // 1 second of break
 				//test alive for the monster
-				if (isAlive(fighters[0])) //the monster has still hp, he is going to fight in return !
+				if (isAlive(fighters.get(0))) //the monster has still hp, he is going to fight in return !
 				{
 					System.out.println("The monster survives, he is going to fight in return.");
 					delay(1); // 1 second of break
 					//attacks of the fighter f
 					takesDamagesUser(amountAttackF);
-					System.out.println("You takes damages.");
+					System.out.println("You take damages.");
 					delay(1); // 1 second of break
 					//test alive for the user
 					this.testDeadUser();
 					//the User is not dead 
 					System.out.println("End of the turn. You have now "+this.getHitPoints());
 					delay(1); // 1 second of break
-					System.out.println("The monster has now :"+fighters[0].getHitPoints());
+					System.out.println("The monster has now :"+fighters.get(0).getHitPoints());
 					delay(1); // 1 second of break
 					i=i+1;//number of turns
 				}	
 				else //the monster has no hp : dead
 				{
-					System.out.println("The Monster is dead... Good Job ! End of fight.");
+					System.out.println("The Monster "+fighters.get(0).getName()+" is dead... Good Job ! End of fight.");
 					delay(1); // 1 second of break
 					System.out.println("You take "+(i+1)+" turns to win.");
 					delay(1); // 1 second of break
 					//have new Weapon ?
-					isBetter(fighters[0].getWeapon(),  this.getWeapon()); //pas sur du tout que cela marche, à vérifier
+					isBetterWeapon(fighters.get(0).getWeapon(),  this.getWeapon()); //pas sur du tout que cela marche, Ã  vÃ©rifier
 					//have new Armor ? 
-					isBetter(fighters[0].getArmors1(), fighters[0].getArmors2(),this.getArmors1(),this.getArmors2());//pas sur à vérifier
+					isBetterArmor(fighters.get(0).getArmors1(), fighters.get(0).getArmors2(),this.getArmors1(),this.getArmors2());//pas sur Ã  vÃ©rifier
 					//new Treasures ? 
 					System.out.println("Oh ! I find some treasures !");
 					delay(1); // 1 second of break
-					this.treasure.setNbPotions(this.treasure.getNbPotions()+fighters[0].getNbPotions());
-					System.out.println("Potions :"+this.getNbPotions());
+					this.getTreasures().setNbPotions(this.getTreasures().getNbPotions()+fighters.get(0).getTreasures().getNbPotions());
+					System.out.println("Potions :"+this.getTreasures().getNbPotions());
 					delay(1); // 1 second of break
-					this.treasure.setScroll(this.treasure.getScroll()+fighters[0].getScroll());
-					System.out.println("Scroll :"+this.getScroll());
+					this.getTreasures().setScroll(this.getTreasures().getScroll()+fighters.get(0).getTreasures().getScroll());
+					System.out.println("Scroll :"+this.getTreasures().getScroll());
 					delay(1); // 1 second of break
-					this.treasure.setGold(this.treasure.getGold()+fighters[0].getGold());
-					System.out.println("Gold :"+this.getGold());
+					this.getTreasures().setGold(this.getTreasures().getGold()+fighters.get(0).getTreasures().getGold());
+					System.out.println("Gold :"+this.getTreasures().getGold());
 					delay(1); // 1 second of break
-					this.treasure.setSilver(this.treasure.getSilver()+fighters[0].getSilver());
-					System.out.println("Silver :"+this.getSilver());
+					this.getTreasures().setSilver(this.getTreasures().getSilver()+fighters.get(0).getTreasures().getSilver());
+					System.out.println("Silver :"+this.getTreasures().getSilver());
 					delay(1); // 1 second of break
 					//this is the end of the fight
 					i=-1;
 					//we delete the fighter who is not alive.
 					fighters.remove(0);
+					return 1;
 				}
 			}
 			else { //The user cannot attacks the fighter. But the fighter can : BOUM !
@@ -183,13 +198,14 @@ public class FighterUser extends Fighter {
 				//test alive for the user
 				this.testDeadUser();
 				//the User is not dead 
-				i=i+1;//number of turns			
+				i=i+1;//number of turns	
 			}
 		}
+		return 0;
 	}
 	
 	//To get the attack of a fighter f (not the user, a monster actually) per turn 
-	public int AttackPerTurn(Weapon WeaponFighter){
+	public int attackPerTurn(Weapon WeaponFighter){
 		return (WeaponFighter.getAttacksPerTurn()*(WeaponFighter.getMinDamage() + (int) (Math.random() * ((WeaponFighter.getMaxDamage() - WeaponFighter.getMinDamage()) + 1))));
 	}
 	
@@ -206,14 +222,17 @@ public class FighterUser extends Fighter {
 	
 	// to test the possibility of attack the fighter f (in function of his armor)
 	public Boolean isAttacksF(Fighter fighterF){
+		
 		int totalArmor=getTotalArmor(fighterF.getArmors1(),fighterF.getArmors2());
-		int randomNumber= 1+ (int)(Math.random()*((20-1)+1);
+		int randomNumber= 1+ (int)(Math.random()*((20-1)+1));
 		if (randomNumber>totalArmor)
 		{
+			
 			return true;
 		}
 		else 
 		{
+			
 			return false;
 		}
 	}
@@ -228,7 +247,7 @@ public class FighterUser extends Fighter {
 		if ((averageWeaponOfMonster>averageWeaponOfUser)&&(WeaponOfMonster.isRecuperable()))
 		{
 			//it is time to change the Weapon of the User by the Weapon of the Monster
-			WeaponOfUser.seName(WeaponOfMonster.getName());
+			WeaponOfUser.setName(WeaponOfMonster.getName());
 			WeaponOfUser.setAttacksPerTurn(WeaponOfMonster.getAttacksPerTurn());
 			WeaponOfUser.setMaxDamage(WeaponOfMonster.getMaxDamage());
 			WeaponOfUser.setMinDamage(WeaponOfMonster.getMinDamage());
@@ -265,17 +284,19 @@ public class FighterUser extends Fighter {
 	}
 	
 	// To rest
-	public void rest() {
+	public boolean rest() {
 		System.out.println("I sleep");
 		// 50% chances to regain hp
 		if (Math.random() < 0.5) {
 			this.setHitPoints(this.getHitPoints() + (11 + (int) (Math.random() * ((20 - 11) + 1))));
+			
 		}
 
 		// 50% to lose HP
 		else {
 			this.fight();
 		}
+		return true;
 	}
 					   
 	public void delay(int i){ // to make a pause of i seconds
@@ -283,8 +304,8 @@ public class FighterUser extends Fighter {
     			Thread.sleep(i*1000);    //i seconds .
 		} 
 		catch(InterruptedException ex) {
-    			Thread.currentThread().interrupt();
+    			System.out.println("BUG ON DELAY");;
 		}
-					   }
+	 }
 }
   
