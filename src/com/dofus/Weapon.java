@@ -7,7 +7,7 @@ public class Weapon {
   private int maxDamage;
   
   
-  public Weapon(String Name, int attacksPerTurn, int minDamage, int maxDamage, ) {
+  public Weapon(String Name, int attacksPerTurn, int minDamage, int maxDamage) {
         this.Name = Name;
         this.attacksPerTurn = attacksPerTurn;
         this.minDamage = minDamage;
