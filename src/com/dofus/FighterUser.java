@@ -9,7 +9,7 @@ public class FighterUser extends Fighter {
 	private ArrayList<Fighter> fighters;
 
 	public FighterUser(Weapon weapon, Armor armor, Armor armor2, Treasure treasure, int hitPoints, ArrayList<Fighter> fighters) {
-		super(weapon, armor, armor2, treasures, hitPoints);
+		super(weapon, armor, armor2, treasure, hitPoints);
 		this.fighters = fighters;
 	}
 	
@@ -22,21 +22,21 @@ public class FighterUser extends Fighter {
 		if (RandomNumberGenerator < 0.3) 
 		{
 			this.setHitPoints(this.getHitPoints() + (5 + (int) (Math.random() * ((10 - 5) + 1))));
-			System.out.println("You regain HP! Now, you have" + this.getPoints());
+			System.out.println("You regain HP! Now, you have" + this.getHitPoints());
 		}
 		
 		//40% chance to regain 11-20 hp
 		else if ((RandomNumberGenerator > 0.3)||(RandomNumberGenerator < 0.7))
 		{
 			this.setHitPoints(this.getHitPoints() + (11 + (int) (Math.random() * ((20 - 11) + 1))));
-			System.out.println("You regain HP! Now, you have" + this.getPoints());
+			System.out.println("You regain HP! Now, you have" + this.getHitPoints());
 		}
 		
 		//20% chance to regain 21-30 hp
 		else if ((RandomNumberGenerator > 0.7)||(RandomNumberGenerator < 0.9))
 		{
 			this.setHitPoints(this.getHitPoints() + (21 + (int) (Math.random() * ((30 - 21) + 1))));
-			System.out.println("You regain HP! Now, you have" + this.getPoints());
+			System.out.println("You regain HP! Now, you have" + this.getHitPoints());
 		}
 		
 		//10% chance to lose 1-20 hp 
@@ -45,8 +45,8 @@ public class FighterUser extends Fighter {
 			this.setHitPoints(this.getHitPoints() - (1 + (int) (Math.random() * ((20 - 1) + 1))));
 			//test Dead of the User
 			this.testDeadUser();
-			//if the User is stil alive
-			System.out.println("You lose HP! Now, you have" + this.getPoints());
+			//if the User is still alive
+			System.out.println("You lose HP! Now, you have" + this.getHitPoints());
 		}
 		this.treasure.setNbPotions(this.treasure.getNbPotions()-1);
 	}
@@ -60,8 +60,8 @@ public class FighterUser extends Fighter {
 		if (RandomNumberGenerator==1)
 		{
 			System.out.println("Double hit points");
-			this.setHitPoints(this.getHitPoints + this.getHitPoints()*2);
-			System.out.println("You gain HP! Now, you have" +this.getPoints());
+			this.setHitPoints(this.getHitPoints() + this.getHitPoints()*2);
+			System.out.println("You gain HP! Now, you have" +this.getHitPoints());
 		}
 		
 		//Scroll - Nothing
@@ -76,7 +76,7 @@ public class FighterUser extends Fighter {
 			System.out.println("Actually, you are dead... Play again");
 			this.quit();
 		}
-		treasures.setScroll(getScroll-1);
+		this.treasure.setScroll(getScroll-1);
 	}
 	// To quit
 	public void quit() {
@@ -94,7 +94,7 @@ public class FighterUser extends Fighter {
 	}
 	
 	public Boolean isAlive(Fighter fighterF){
-		if (fightF.getHitPoints()<1)
+		if (fighterF.getHitPoints()<1)
 		// if HP <1, it is the same as HP of F'<0 (because HP is int, not double and if HP=0, the fighter is also dead)
 		{
 			return true; 
@@ -110,7 +110,7 @@ public class FighterUser extends Fighter {
 		int amountAttackF; //fighter f
 		int i=0; //indice for the loop while
 		//steps of a turn
-		while (i=!-1)
+		while (i>=0)
 		{
 		//initialisation of attacks for the turn
 		amountAttackF=AttackPerTurn(fighters[0].getWeapon());
@@ -221,8 +221,8 @@ public class FighterUser extends Fighter {
 	public void isBetterWeapon(Weapon WeaponOfMonster, Weapon WeaponOfUser) { // si on met directement les fighters en variable cela peut optimiser le programme
 		
 		// to get the average of damage of weapons 
-		averageWeaponOfMonster=WeaponOfMonster.getAttacksPerTurn()*(WeaponOfMonster.getMaxDamage()+WeaponOfMonster.getMinDamage())/2;
-		averageWeaponOfUser=WeaponOfUser.getAttacksPerTurn()*(WeaponOfUser.getMaxDamage()+WeaponOfUser.getMinDamage())/2;
+		double averageWeaponOfMonster=WeaponOfMonster.getAttacksPerTurn()*(WeaponOfMonster.getMaxDamage()+WeaponOfMonster.getMinDamage())/2;
+		double averageWeaponOfUser=WeaponOfUser.getAttacksPerTurn()*(WeaponOfUser.getMaxDamage()+WeaponOfUser.getMinDamage())/2;
 		
 		//test of weapon : comparaison of averageWeapon and test of the type of weapon (is Recuperable by the user or not)
 		if ((averageWeaponOfMonster>averageWeaponOfUser)&&(WeaponOfMonster.isRecuperable()))
