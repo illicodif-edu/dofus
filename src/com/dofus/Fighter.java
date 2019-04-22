@@ -25,12 +25,12 @@ public class Fighter {
         this.weapon = weapon;
     }
 
-    public Armor[0] getArmors1() {
+    public Armor getArmors1() {
         return armors[0];
     }
     
     
-    public Armor[1] getArmors2() {
+    public Armor getArmors2() {
         return armors[1];
     }
 
