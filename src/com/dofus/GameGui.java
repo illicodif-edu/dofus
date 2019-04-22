@@ -15,6 +15,8 @@ public class GameGui extends JFrame {
 	private JLabel messageLabel; // Add a message
 	private JLabel userStatus;
 
+	private boolean stateRest = false;
+
 	// The buttons
 	private JButton rest;
 	private JButton quit;
@@ -72,9 +74,9 @@ public class GameGui extends JFrame {
 		
 		userStatus = new JLabel("<html>User Summary"
 					+ "<div>Your HP: "+user.getHitPoints()+"<div><br>"
-					+ "<div>Your armor is: "+user.getArmors()[0].getName()+" ("+user.getArmors()[0].getProtection()+")<div><br>"
-					+ "<div>Your shield (if you have one) is: "+user.getArmors()[1].getName()+" ("+user.getArmors()[1].getProtection()+")<div><br>"
-					+ "<div>Your weapon is: "+user.getWeapon().getType()+" with: "+user.getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> <div>"
+					+ "<div>Your armor is: "+user.getArmors1().getName()+" ("+user.getArmors1().getProtection()+")<div><br>"
+					+ "<div>Your shield (if you have one) is: "+user.getArmors2().getName()+" ("+user.getArmors2().getProtection()+")<div><br>"
+					+ "<div>Your weapon is: "+user.getWeapon().getName()+" with: "+user.getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> <div>"
 					+ "<div>and: "+user.getWeapon().getMinDamage()+" of minimum damage and: "+user.getWeapon().getMaxDamage()+" of maxmimum damage<div></html>"
 				);
 		userStatus.setFont(new Font("Serif", Font.BOLD, 19));
@@ -127,6 +129,7 @@ public class GameGui extends JFrame {
 
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			int state;
 
 			// Test on the button to trigger the right function
 			if (e.getSource() == potionScroll) {
@@ -134,13 +137,20 @@ public class GameGui extends JFrame {
 				new PotionScrollGui(user);
 			}
 			if (e.getSource() == rest) {
-				user.rest();
+				if(stateRest == false) {
+				
+					stateRest = user.rest();
+				}
 			}
 			if (e.getSource() == quit) {
 				user.quit();
 			}
 			if (e.getSource() == fight) {
-				user.fight();
+				state = user.fight();
+				if(state == 1) {
+					dispose();
+					new GameGui(user);
+				}
 			}
 
 		}
