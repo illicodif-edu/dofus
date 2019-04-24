@@ -17,7 +17,9 @@ public class PotionScrollGui extends JFrame {
 	private JButton potion;
 	private JButton scroll;
 	private JButton back;
-	
+	private JButton buypotion;
+	private JButton buyscroll;
+
 	private final int WINDOW_WIDTH = 800; // Window width
 	private final int WINDOW_HEIGHT = 800; // Window height
 
@@ -35,21 +37,22 @@ public class PotionScrollGui extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		// Set Background Image
-				try {
-				    final Image backgroundImage = javax.imageio.ImageIO.read(new File("src\\com\\dofus\\potion.png"));
-				    setContentPane(new JPanel(new BorderLayout()) {
-				        @Override public void paintComponent(Graphics g) {
-				            g.drawImage(backgroundImage, 0, 0, null);
-				        }
-				    });
-				} catch (IOException e) {
-				    System.out.println("The background did not load");
-				   
+		try {
+			final Image backgroundImage = javax.imageio.ImageIO.read(new File("src\\com\\dofus\\potion.png"));
+			setContentPane(new JPanel(new BorderLayout()) {
+				@Override
+				public void paintComponent(Graphics g) {
+					g.drawImage(backgroundImage, 0, 0, null);
 				}
-				
+			});
+		} catch (IOException e) {
+			System.out.println("The background did not load");
+
+		}
+
 		// Add a GridLayout manager to the content pane.
 		setLayout(null);
-		
+
 		// Build the panel and add it to the frame.
 		buildPanel();
 
@@ -67,69 +70,76 @@ public class PotionScrollGui extends JFrame {
 		potion = new JButton("Potion");
 		scroll = new JButton("Scroll");
 		back = new JButton("Go back to main");
-		
+		buypotion = new JButton("Buy a potion with 1 gold");
+		buyscroll = new JButton("Buy a scroll with 1 silver");
 
 		// Bind the buttons with the listener class
 		potion.addActionListener(buttonL);
 		scroll.addActionListener(buttonL);
 		back.addActionListener(buttonL);
-		
+		buypotion.addActionListener(buttonL);
+		buyscroll.addActionListener(buttonL);
+
 		// Change the font of the buttons
 		Font buttonFont = new Font("SansSerif", Font.PLAIN, 15);
 		potion.setFont(buttonFont);
 		scroll.setFont(buttonFont);
 		back.setFont(buttonFont);
+		buypotion.setFont(buttonFont);
+		buyscroll.setFont(buttonFont);
 		messageLabel.setFont(new Font("Serif", Font.BOLD, 25));
-		
+
 		// Change the color of the buttons
 		potion.setBackground(Color.GREEN);
 		back.setBackground(Color.RED);
 		scroll.setBackground(Color.CYAN);
+		buypotion.setBackground(Color.LIGHT_GRAY);
+		buyscroll.setBackground(Color.YELLOW);
 		messageLabel.setForeground(Color.blue);
-		
-		
+
 		// Absolute positioning
-		messageLabel.setBounds(340, 10, 200, 100);		
+		messageLabel.setBounds(340, 10, 250, 100);
 		scroll.setBounds(450, 140, 150, 50);
 		back.setBounds(350, 200, 150, 50);
 		potion.setBounds(250, 140, 150, 50);
-		
-		
+		buypotion.setBounds(230, 260, 200, 50);
+		buyscroll.setBounds(430, 260, 200, 50);
 
 		// Add the components to the main panel.
-		
-		add(potion);		
+
+		add(potion);
 		add(scroll);
 		add(back);
+		add(buypotion);
+		add(buyscroll);
 		add(messageLabel);
-		
-		
 
 	}
 
 	private class ButtonListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {			
+		public void actionPerformed(ActionEvent e) {
 			// Test on the button to trigger the right function
 			if (e.getSource() == potion) {
-				
+
 				user.utilizePotion();
-				
 			}
 			if (e.getSource() == scroll) {
-				
+
 				user.utilizeScroll();
-					
-				
+			}
+			if (e.getSource() == buypotion) {
+				user.buyPotion();
+			}
+			if (e.getSource() == buyscroll) {
+				user.buyScroll();
 			}
 			if (e.getSource() == back) {
 				dispose();
 				new GameGui(user);
-			}		
+			}
 
 		}
 
 	}
-
-
 
 }
