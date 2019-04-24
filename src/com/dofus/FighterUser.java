@@ -133,7 +133,7 @@ public class FighterUser extends Fighter {
 		{
 		// initialisation of attacks for the turn
 		amountAttackF=attackPerTurn(fighters.get(0).getWeapon());
-		System.out.println("The monster will fight with "+ amountAttackF+"damages per turn.");
+		System.out.println("The monster will fight with "+ amountAttackF+" damages per turn.");
 		delay(1); // 1 second of break
 		amountAttackUser= this.attackPerTurn(this.getWeapon());
 		System.out.println("You will fight with "+ amountAttackUser+"damages per turn.");
@@ -313,5 +313,34 @@ public class FighterUser extends Fighter {
     			System.out.println("BUG SUR DELAY");;
 		}
 					   }
+	
+	public void buyScroll()
+	{
+	    if (this.getTreasures().getSilver()>=1)
+	        {        
+	        System.out.println("You just bought a Scroll HOUUUU");
+	        this.getTreasures().setScroll(this.getTreasures().getScroll()+1);
+	        this.getTreasures().setSilver(this.getTreasures().getSilver()-1);
+	        }
+	    else     
+	        {
+	        System.out.println("Sorry, you don't have enough Silver");
+	        }
+	}
+
+
+	public void buyPotion()
+	{
+	    if (this.getTreasures().getGold()>=1)
+	        {        
+	        System.out.println("You just bought a Potion HOUUUU");
+	        this.getTreasures().setNbPotions(this.getTreasures().getNbPotions()+1);
+	        this.getTreasures().setGold(this.getTreasures().getGold()-1);
+	        }
+	    else     
+	        {
+	        System.out.println("Sorry, you don't have enough Gold");
+	        }
+	}
 }
   
