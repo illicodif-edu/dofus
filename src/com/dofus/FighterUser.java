@@ -11,7 +11,8 @@ public class FighterUser extends Fighter implements Runnable{
 	private ArrayList<Fighter> fighters;
 	private GameGui gui;
 	private boolean shop = true;
-
+	private boolean stateRest = false;
+	private boolean stateFight = false;
     public boolean isShop() {
         return shop;
     }
@@ -20,7 +21,7 @@ public class FighterUser extends Fighter implements Runnable{
         this.shop = shop;
     }
 
-    private boolean stateRest = false;
+    
 	public FighterUser(Weapon weapon, Armor armor, Armor armor2, Treasure treasure, int hitPoints, ArrayList<Fighter> fighters) {
 		super("MOI",weapon, armor, armor2, treasure, hitPoints);
 		this.fighters = fighters;
@@ -29,7 +30,15 @@ public class FighterUser extends Fighter implements Runnable{
 	public boolean getStateRest() {
 		return stateRest;
 	}
+	
+	public boolean getStateFight() {
+		return stateFight;
+	}
+	
+	
 	public void setStateRest(boolean state){this.stateRest = state;}
+	
+	public void setStateFight(boolean state){this.stateFight = state;}
 	
 	//To use treasure=potion
 	public void utilizePotion()
@@ -229,6 +238,7 @@ public class FighterUser extends Fighter implements Runnable{
 					stateRest =false;
                     updateScreen();
                     this.setStateRest(false);
+                    this.setStateFight(false);
                     this.setShop(true);
                     Thread.currentThread().interrupt();
 					//return 1;

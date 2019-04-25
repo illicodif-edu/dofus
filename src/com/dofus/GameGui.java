@@ -226,11 +226,16 @@ public class GameGui extends JFrame {
 				user.quit();
 			}
 			if (e.getSource() == fight) {
+				
+				if(user.getStateFight() == false) {
+				user.setStateFight(true);
 				playSound("src\\com\\dofus\\bruitepee.wav");
                 Thread t = new Thread(user);
                 user.setShop(false);
                 user.setStateRest(true);
                 t.start();
+                
+			}
 			}
 
 		}
