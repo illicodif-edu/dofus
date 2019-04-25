@@ -24,7 +24,6 @@ public class GameGui extends JFrame {
 	private JLabel alertBox = new JLabel();
 	private JLabel myDamage = new JLabel();
 	private JLabel monsterDamage= new JLabel();
-	private int state;
 
 	
 
@@ -105,15 +104,16 @@ public class GameGui extends JFrame {
         monsterStatus.setFont(new Font("Serif", Font.BOLD, 19));
         monsterStatus.setForeground(Color.red);
 
+        alertBox.setText("<html><div style='text-align: center;'>You hit !</div></html>");
 		alertBox.setFont(new Font("Serif", Font.BOLD, 19));
 		alertBox.setForeground(Color.red);
 
-        monsterDamage.setText("<html>The monster will fight with 0 damages per turn.</html>");
+        monsterDamage.setText("<html><div>The monster will fight with 0 damages per turn.</div></html>");
 		monsterDamage.setFont(new Font("Serif", Font.BOLD, 19));
 		monsterDamage.setForeground(Color.red);
 		monsterDamage.setHorizontalAlignment(SwingConstants.RIGHT);
 
-		myDamage.setText("<html>You will fight with 0 damages per turn</html>");
+		myDamage.setText("<html><div>You will fight with 0 damages per turn</div></html>");
 		myDamage.setFont(new Font("Serif", Font.BOLD, 19));
 		myDamage.setForeground(Color.red);
 		
@@ -151,9 +151,9 @@ public class GameGui extends JFrame {
 		potionScroll.setBounds(550, 440, 150, 50);
 		rest.setBounds(350, 500, 150, 50);
 		fight.setBounds(350, 440, 150, 50);
-        myDamage.setBounds(10, 790, 440, 100);
-        alertBox.setBounds(650, 400, 200, 100);
-        monsterDamage.setBounds(580, 790, 400, 100);
+        myDamage.setBounds(10, 720, 440, 100);
+        alertBox.setBounds(50, 560, 900, 50);
+        monsterDamage.setBounds(580, 720, 400, 100);
 
 
 		// Add the components to the main panel.
@@ -205,7 +205,6 @@ public class GameGui extends JFrame {
 				user.quit();
 			}
 			if (e.getSource() == fight) {
-				//state = user.fight();
 				playSound("src\\com\\dofus\\bruitepee.wav");
                 Thread t = new Thread(user);
                 t.start();
@@ -224,10 +223,22 @@ public class GameGui extends JFrame {
         monsterStatus.setHorizontalAlignment(SwingConstants.RIGHT);
     }
 
-
-    public void setState(int state) {
-        this.state = state;
+    public void setMyDamage(String text){
+	    myDamage.setText(text);
     }
+
+    public void setMonsterDamage(String text){
+        monsterDamage.setText(text);
+        monsterDamage.setHorizontalAlignment(SwingConstants.RIGHT);
+    }
+
+    public void setAlertBox(String text) {
+        alertBox.setText(text);
+        alertBox.setHorizontalAlignment(SwingConstants.CENTER);
+    }
+
+
+
     
     public void playSound(String relativePath) {
     	String soundName = relativePath;    

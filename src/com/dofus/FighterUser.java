@@ -127,7 +127,7 @@ public class FighterUser extends Fighter implements Runnable{
 	// To fight
 	public void run() {
 		updateScreen();
-		System.out.println("I fight");
+		updateAlertBox("I fight");
 		int amountAttackUser;
 		int amountAttackF; //fighter f
 		int i=0; // indice for the loop while
@@ -136,28 +136,30 @@ public class FighterUser extends Fighter implements Runnable{
 		{
 		// initialisation of attacks for the turn
 		amountAttackF=attackPerTurn(fighters.get(0).getWeapon());
-		System.out.println("The monster will fight with "+ amountAttackF+" damages per turn.");
+		updateMonsterDamage(amountAttackF);
 		delay(1); // 1 second of break
 		amountAttackUser= this.attackPerTurn(this.getWeapon());
-		System.out.println("You will fight with "+ amountAttackUser+"damages per turn.");
+		updateMyDamage(amountAttackUser);
 		delay(1); // 1 second of break
 			if (isAttacksF(fighters.get(0)))
 			{
-				System.out.println("Lucky ! You can hit the monster!");
-				delay(1); // 1 second of break
+                updateAlertBox("Lucky ! You can hit the monster!");
+				delay(2); // 1 second of break
 				//attacksoftheUser
 				takesDamagesF(amountAttackUser,fighters.get(0));
 				delay(1); // 1 second of break
-				System.out.println("The monster takes damages.");
-				delay(1); // 1 second of break
+                updateAlertBox("The monster takes damages.");
+                updateScreen();
+				delay(2); // 1 second of break
 				//test alive for the monster
 				if (isAlive(fighters.get(0))) //the monster has still hp, he is going to fight in return !
 				{
-					System.out.println("The monster survives, he is going to fight in return.");
+                    updateAlertBox("The monster survives, he is going to fight in return.");
 					delay(1); // 1 second of break
 					//attacks of the fighter f
 					takesDamagesUser(amountAttackF);
-					System.out.println("You take damages.");
+                    updateAlertBox("You take damages.");
+                    updateScreen();
 					delay(1); // 1 second of break
 					//test alive for the user
 					this.testDeadUser();
@@ -171,16 +173,16 @@ public class FighterUser extends Fighter implements Runnable{
 				}	
 				else //the monster has no hp : dead
 				{
-					System.out.println("The Monster "+fighters.get(0).getName()+" is dead... Good Job ! End of fight.");
-					delay(1); // 1 second of break
-					System.out.println("You take "+(i+1)+" turns to win.");
-					delay(1); // 1 second of break
+                    updateAlertBox("The Monster "+fighters.get(0).getName()+" is dead... Good Job ! End of fight.");
+					delay(2); // 1 second of break
+                    updateAlertBox("You take "+(i+1)+" turns to win.");
+					delay(2); // 1 second of break
 					//have new Weapon ?
 					isBetterWeapon(fighters.get(0).getWeapon(),  this.getWeapon()); //pas sur du tout que cela marche, Ã  vÃ©rifier
 					//have new Armor ? 
 					isBetterArmor(fighters.get(0).getArmors1(), fighters.get(0).getArmors2(),this.getArmors1(),this.getArmors2());//pas sur Ã  vÃ©rifier
 					//new Treasures ? 
-					System.out.println("Oh ! I find some treasures !");
+                    updateAlertBox("Oh ! I find some treasures !");
 					delay(1); // 1 second of break
 					this.getTreasures().setNbPotions(this.getTreasures().getNbPotions()+fighters.get(0).getTreasures().getNbPotions());
 					System.out.println("Potions :"+this.getTreasures().getNbPotions());
@@ -213,7 +215,6 @@ public class FighterUser extends Fighter implements Runnable{
 					}
 					
 					stateRest =false;
-					gui.setState(1);
                     updateScreen();
                     Thread.currentThread().interrupt();
 					//return 1;
@@ -230,8 +231,7 @@ public class FighterUser extends Fighter implements Runnable{
 				i=i+1;//number of turns	
 			}
 		}
-		//return 0;
-        gui.setState(0);
+
         updateScreen();
 		Thread.currentThread().interrupt();
 	}
@@ -383,9 +383,22 @@ public class FighterUser extends Fighter implements Runnable{
         );
     }
 
+    public void updateAlertBox(String text){
+	    gui.setAlertBox(text);
+    }
+
+    public void updateMonsterDamage(int damage){
+        gui.setMonsterDamage("<html><div>The monster will fight with "+damage+" damages per turn.</div></html>");
+    }
+
+    public void updateMyDamage(int damage){
+        gui.setMyDamage("<html><div>You will fight with "+damage+" damages per turn.</div></html>");
+    }
+
     public void updateScreen(){
 	    updateUserStatus();
 	    updateMonsterStatus();
+
     }
 }
   
