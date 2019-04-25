@@ -13,7 +13,9 @@ public class GameGui extends JFrame {
 
 	private FighterUser user; // The user
 	private JLabel messageLabel; // Add a message
-	private JLabel userStatus;
+	private JLabel userStatus = new JLabel();
+	private JLabel monsterStatus = new JLabel("<html>Monster Summary</html>");
+	private int state;
 
 	
 
@@ -60,11 +62,16 @@ public class GameGui extends JFrame {
 		// Build the panel and add it to the frame.
 		buildPanel();
 
+        //add the gui to the user
+        user.setGui(this);
+
 		// Display the window.
 		setVisible(true);
 	}
 
 	private void buildPanel() {
+
+
 		// Create the button Listener class
 		ButtonListener buttonL = new ButtonListener();
 
@@ -72,7 +79,7 @@ public class GameGui extends JFrame {
 		messageLabel = new JLabel("<html><div>Bienvenue dans (presque) Dofus</div></html>");
 		messageLabel.setFont(new Font("Serif", Font.BOLD, 19));
 		
-		userStatus = new JLabel("<html>User Summary"
+		userStatus.setText("<html>User Summary"
 					+ "<div>Your HP: "+user.getHitPoints()+"<div><br>"
 					+ "<div>Your armor is: "+user.getArmors1().getName()+" ("+user.getArmors1().getProtection()+")<div><br>"
 					+ "<div>Your shield (if you have one) is: "+user.getArmors2().getName()+" ("+user.getArmors2().getProtection()+")<div><br>"
@@ -81,6 +88,10 @@ public class GameGui extends JFrame {
 				);
 		userStatus.setFont(new Font("Serif", Font.BOLD, 19));
 		userStatus.setForeground(Color.red);
+
+
+        monsterStatus.setFont(new Font("Serif", Font.BOLD, 19));
+        monsterStatus.setForeground(Color.red);
 		
 		
 		// Create the buttons
@@ -111,6 +122,7 @@ public class GameGui extends JFrame {
 		
 		messageLabel.setBounds(340, 10, 150, 50);
 		userStatus.setBounds(10,0,400,300);
+		monsterStatus.setBounds(0,500,400,300);
 		quit.setBounds(450, 400, 150, 50);
 		potionScroll.setBounds(450, 340, 150, 50);
 		rest.setBounds(250, 400, 150, 50);
@@ -124,12 +136,13 @@ public class GameGui extends JFrame {
 		add(fight);
 		add(messageLabel);
 		add(userStatus);
+		add(monsterStatus);
 
 	}
 
 	private class ButtonListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			int state;
+
 			
 
 			// Test on the button to trigger the right function
@@ -139,25 +152,47 @@ public class GameGui extends JFrame {
 			}
 			if (e.getSource() == rest) {
 				if(user.getStateRest() == false) {
-				
-					user.rest();
-				}
+
+                    System.out.println("I sleep");
+                    // 50% chances to regain hp
+                    if (Math.random() < 0.5) {
+                        user.setHitPoints(user.getHitPoints() + (11 + (int) (Math.random() * ((20 - 11) + 1))));
+
+                    }
+
+                    // 50% to fight
+                    else {
+                        //this.fight();
+                        Thread t = new Thread(user);
+                        t.start();
+                    }
+                    user.setStateRest(true);
+                }
 				
 			}
 			if (e.getSource() == quit) {
 				user.quit();
 			}
 			if (e.getSource() == fight) {
-				state = user.fight();
-				if(state == 1) {
-					dispose();
-					new GameGui(user);
-				}
+				//state = user.fight();
+                Thread t = new Thread(user);
+                t.start();
 			}
 
 		}
 
 	}
 
+    public void setUserStatusText(String text) {
+        userStatus.setText(text);
+    }
 
+    public void setMonsterStatus(String text) {
+        monsterStatus.setText(text);
+    }
+
+
+    public void setState(int state) {
+        this.state = state;
+    }
 }

@@ -5,10 +5,11 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 
 
-public class FighterUser extends Fighter {
+public class FighterUser extends Fighter implements Runnable{
 
 	// ArrayList of fighters
 	private ArrayList<Fighter> fighters;
+	private GameGui gui;
 
 	private boolean stateRest = false;
 	public FighterUser(Weapon weapon, Armor armor, Armor armor2, Treasure treasure, int hitPoints, ArrayList<Fighter> fighters) {
@@ -19,6 +20,7 @@ public class FighterUser extends Fighter {
 	public boolean getStateRest() {
 		return stateRest;
 	}
+	public void setStateRest(boolean state){this.stateRest = state;}
 	
 	//To use treasure=potion
 	public void utilizePotion()
@@ -123,7 +125,7 @@ public class FighterUser extends Fighter {
 		}
 	}
 	// To fight
-	public int fight() {
+	public void run() {
 		System.out.println("I fight");
 		int amountAttackUser;
 		int amountAttackF; //fighter f
@@ -164,6 +166,7 @@ public class FighterUser extends Fighter {
 					System.out.println("The monster has now :"+fighters.get(0).getHitPoints());
 					delay(1); // 1 second of break
 					i=i+1;//number of turns
+                    updateScreen();
 				}	
 				else //the monster has no hp : dead
 				{
@@ -195,7 +198,10 @@ public class FighterUser extends Fighter {
 					//we delete the fighter who is not alive.
 					fighters.remove(0);
 					stateRest =false;
-					return 1;
+					gui.setState(1);
+                    updateScreen();
+                    Thread.currentThread().interrupt();
+					//return 1;
 				}
 			}
 			else { //The user cannot attacks the fighter. But the fighter can : BOUM !
@@ -203,11 +209,15 @@ public class FighterUser extends Fighter {
 				takesDamagesUser(amountAttackF);
 				//test alive for the user
 				this.testDeadUser();
+                updateScreen();
 				//the User is not dead 
 				i=i+1;//number of turns	
 			}
 		}
-		return 0;
+		//return 0;
+        gui.setState(0);
+        updateScreen();
+		Thread.currentThread().interrupt();
 	}
 	
 	//To get the attack of a fighter f (not the user, a monster actually) per turn 
@@ -259,6 +269,7 @@ public class FighterUser extends Fighter {
 			WeaponOfUser.setMinDamage(WeaponOfMonster.getMinDamage());
 			System.out.println("I change my Weapon. I am stronger now !");
 		}
+        updateScreen();
 	}
 	
 	//is BetterMethods for Armor after fight 
@@ -280,6 +291,7 @@ public class FighterUser extends Fighter {
 			ArmorOfUser2.setProtection(ArmorOfMonster2.getProtection());
 			System.out.println("I change my Armor. I am safe now, I hope... !");
 		}
+        updateScreen();
 	}
 	
 	// to get the total of the protection of armor
@@ -289,21 +301,7 @@ public class FighterUser extends Fighter {
 		return armorOfFighter1.getProtection()+armorOfFighter2.getProtection();
 	}
 	
-	// To rest
-	public void rest() {
-		System.out.println("I sleep");
-		// 50% chances to regain hp
-		if (Math.random() < 0.5) {
-			this.setHitPoints(this.getHitPoints() + (11 + (int) (Math.random() * ((20 - 11) + 1))));
-			
-		}
 
-		// 50% to lose HP
-		else {
-			this.fight();
-		}
-		stateRest = true;
-	}
 					   
 	public void delay(int i){ // to make a pause of i seconds
 		try {
@@ -342,5 +340,35 @@ public class FighterUser extends Fighter {
 	        System.out.println("Sorry, you don't have enough Gold");
 	        }
 	}
+
+    public void setGui(GameGui gui) {
+        this.gui = gui;
+    }
+
+    public void updateUserStatus(){
+        gui.setUserStatusText("<html>User Summary"
+                + "<div>Your HP: "+this.getHitPoints()+"<div><br>"
+                + "<div>Your armor is: "+this.getArmors1().getName()+" ("+this.getArmors1().getProtection()+")<div><br>"
+                + "<div>Your shield (if you have one) is: "+this.getArmors2().getName()+" ("+this.getArmors2().getProtection()+")<div><br>"
+                + "<div>Your weapon is: "+this.getWeapon().getName()+" with: "+this.getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> <div>"
+                + "<div>and: "+this.getWeapon().getMinDamage()+" of minimum damage and: "+this.getWeapon().getMaxDamage()+" of maxmimum damage<div></html>"
+        );
+    }
+
+    public void updateMonsterStatus(){
+        gui.setMonsterStatus("<html>Monster Summary"
+                + "<div>His name: "+fighters.get(0).getName()+"<div><br>"
+                + "<div>His HP: "+fighters.get(0).getHitPoints()+"<div><br>"
+                + "<div>Your armor is: "+fighters.get(0).getArmors1().getName()+" ("+fighters.get(0).getArmors1().getProtection()+")<div><br>"
+                + "<div>Your shield (if you have one) is: "+fighters.get(0).getArmors2().getName()+" ("+fighters.get(0).getArmors2().getProtection()+")<div><br>"
+                + "<div>Your weapon is: "+fighters.get(0).getWeapon().getName()+" with: "+fighters.get(0).getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> <div>"
+                + "<div>and: "+fighters.get(0).getWeapon().getMinDamage()+" of minimum damage and: "+fighters.get(0).getWeapon().getMaxDamage()+" of maxmimum damage<div></html>"
+        );
+    }
+
+    public void updateScreen(){
+	    updateUserStatus();
+	    updateMonsterStatus();
+    }
 }
   
