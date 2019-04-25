@@ -86,8 +86,8 @@ public class GameGui extends JFrame {
 		ButtonListener buttonL = new ButtonListener();
 
 		// Create the label, text field, and buttons.
-		messageLabel = new JLabel("<html><div style='text-align: right;'>Bienvenue dans (presque) Dofus</div></html>");
-		messageLabel.setFont(new Font("Serif", Font.BOLD, 19));
+		messageLabel = new JLabel("<html><div style='text-align: right;'>Dofus</div></html>");
+		messageLabel.setFont(new Font("Georgia", Font.BOLD, 19));
 		
 		userStatus.setText("<html>User Summary"
 					+ "<div>Your HP: "+user.getHitPoints()+"<div><br>"
@@ -97,25 +97,25 @@ public class GameGui extends JFrame {
 					+ "<div>and: "+user.getWeapon().getMinDamage()+" of minimum damage and: "+user.getWeapon().getMaxDamage()+" of maxmimum damage<div><br>"
                     + "<div>Your have: "+user.getTreasures().getNbPotions()+" potions, "+user.getTreasures().getScroll()+" scroll, "+user.getTreasures().getGold()+" gold, "+user.getTreasures().getSilver()+" silver."+"<div></html>"
         );
-		userStatus.setFont(new Font("Serif", Font.BOLD, 19));
+		userStatus.setFont(new Font("Georgia", Font.BOLD, 19));
 		userStatus.setForeground(Color.red);
 
 
-        monsterStatus.setFont(new Font("Serif", Font.BOLD, 19));
+        monsterStatus.setFont(new Font("Georgia", Font.BOLD, 19));
         monsterStatus.setForeground(Color.red);
 
 
-		alertBox.setFont(new Font("Serif", Font.BOLD, 19));
-		alertBox.setForeground(Color.red);
+		alertBox.setFont(new Font("Georgia", Font.BOLD, 19));
+		alertBox.setForeground(Color.white);
 
         monsterDamage.setText("<html><div>The monster will fight with 0 damages per turn.</div></html>");
-		monsterDamage.setFont(new Font("Serif", Font.BOLD, 19));
-		monsterDamage.setForeground(Color.red);
+		monsterDamage.setFont(new Font("Georgia", Font.BOLD, 19));
+		monsterDamage.setForeground(Color.white);
 		monsterDamage.setHorizontalAlignment(SwingConstants.RIGHT);
 
 		myDamage.setText("<html><div>You will fight with 0 damages per turn</div></html>");
-		myDamage.setFont(new Font("Serif", Font.BOLD, 19));
-		myDamage.setForeground(Color.red);
+		myDamage.setFont(new Font("Georgia", Font.BOLD, 19));
+		myDamage.setForeground(Color.white);
 		
 		
 		// Create the buttons
@@ -125,7 +125,7 @@ public class GameGui extends JFrame {
 		fight = new JButton("FIGHTT !!");
 		
 		// Change the font of the buttons
-		Font buttonFont = new Font("SansSerif", Font.PLAIN, 15);
+		Font buttonFont = new Font("Georgia", Font.PLAIN, 15);
 		rest.setFont(buttonFont);
 		quit.setFont(buttonFont);
 		potionScroll.setFont(buttonFont);
@@ -144,16 +144,16 @@ public class GameGui extends JFrame {
 		fight.addActionListener(buttonL);
 
 		
-		messageLabel.setBounds(440, 10, 150, 50);
+		messageLabel.setBounds(440, 20, 150, 50);
 		userStatus.setBounds(10,0,440,400);
 		monsterStatus.setBounds(580,0,400,400);
 		quit.setBounds(550, 500, 150, 50);
 		potionScroll.setBounds(550, 440, 150, 50);
 		rest.setBounds(350, 500, 150, 50);
 		fight.setBounds(350, 440, 150, 50);
-        myDamage.setBounds(10, 720, 440, 100);
+        myDamage.setBounds(10, 720, 490, 70);
         alertBox.setBounds(50, 560, 900, 50);
-        monsterDamage.setBounds(580, 720, 400, 100);
+        monsterDamage.setBounds(500, 720, 490, 70);
 
 
 		// Add the components to the main panel.
@@ -240,11 +240,14 @@ public class GameGui extends JFrame {
 
     public void setMyDamage(String text){
 	    myDamage.setText(text);
+        myDamage.setVerticalAlignment(SwingConstants.CENTER);
+
     }
 
     public void setMonsterDamage(String text){
         monsterDamage.setText(text);
-        monsterDamage.setHorizontalAlignment(SwingConstants.RIGHT);
+        monsterDamage.setHorizontalAlignment(SwingConstants.CENTER);
+        monsterDamage.setVerticalAlignment(SwingConstants.CENTER);
     }
 
     public void setAlertBox(String text) {

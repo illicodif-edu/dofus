@@ -83,14 +83,14 @@ public class PotionScrollGui extends JFrame {
 		buyscroll.addActionListener(buttonL);
 
 		// Change the font of the buttons
-		Font buttonFont = new Font("SansSerif", Font.PLAIN, 15);
+		Font buttonFont = new Font("Georgia", Font.PLAIN, 15);
 		potion.setFont(buttonFont);
 		scroll.setFont(buttonFont);
 		back.setFont(buttonFont);
 		buypotion.setFont(buttonFont);
 		buyscroll.setFont(buttonFont);
-		messageLabel.setFont(new Font("Serif", Font.BOLD, 25));
-		inventory.setFont(new Font("Serif", Font.BOLD, 25));
+		messageLabel.setFont(new Font("Georgia", Font.BOLD, 25));
+		inventory.setFont(new Font("Georgia", Font.BOLD, 25));
 
 		// Change the color of the buttons
 		potion.setBackground(Color.GREEN);
@@ -159,6 +159,7 @@ public class PotionScrollGui extends JFrame {
 
 	}
 
+	//This function update JLabel
 	private void updatePotionScreen(){
 		inventory.setText("<html><div style='text-align: center;'>Your inventory :</div><br>"
                 + "<div style='text-align: center;'>Your HP: "+user.getHitPoints()+"</div><br>"
