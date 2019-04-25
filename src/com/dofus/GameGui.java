@@ -272,8 +272,15 @@ public class GameGui extends JFrame {
     }
 
     public void setMonsterImage(String path) {
-        ImageIcon iconFace = new ImageIcon(path);
-        monsterFace.setIcon(iconFace);
+        try {
+            ImageIcon iconFace = new ImageIcon(path);
+            monsterFace.setIcon(iconFace);
+
+        } catch (NullPointerException e) {
+            System.out.println("The background did not load");
+
+        }
+
     }
 
 

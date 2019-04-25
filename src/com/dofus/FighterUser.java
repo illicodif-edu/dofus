@@ -195,7 +195,7 @@ public class FighterUser extends Fighter implements Runnable{
 				{
                     updateAlertBox("The Monster "+fighters.get(0).getName()+" is dead... Good Job ! End of fight.");
 					delay(3); // 1 second of break
-                    updateAlertBox("You take "+(i+1)+" turns to win.");
+                    updateAlertBox("You took "+(i+1)+" turns to win.");
 					delay(3); // 1 second of break
 
 					//have new Weapon ?
@@ -203,7 +203,7 @@ public class FighterUser extends Fighter implements Runnable{
 					//have new Armor ? 
 					isBetterArmor(fighters.get(0).getArmors1(), fighters.get(0).getArmors2(),this.getArmors1(),this.getArmors2());//pas sur Ã  vÃ©rifier
 					//new Treasures ? 
-                    updateAlertBox("Oh ! I find some treasures !");
+                    updateAlertBox("Oh ! I found some treasures !");
 					delay(1); // 1 second of break
 					this.getTreasures().setNbPotions(this.getTreasures().getNbPotions()+fighters.get(0).getTreasures().getNbPotions());
 					System.out.println("Potions :"+this.getTreasures().getNbPotions());
