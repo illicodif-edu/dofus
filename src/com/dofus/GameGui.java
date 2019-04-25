@@ -2,6 +2,12 @@ package com.dofus;
 
 
 import java.util.ArrayList;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -55,6 +61,8 @@ public class GameGui extends JFrame {
 		    System.out.println("The background did not load");
 		   
 		}
+		
+		
 
 		
 		setLayout(null);
@@ -176,6 +184,7 @@ public class GameGui extends JFrame {
 			}
 			if (e.getSource() == fight) {
 				//state = user.fight();
+				playSound("src\\com\\dofus\\bruitepee.wav");
                 Thread t = new Thread(user);
                 t.start();
 			}
@@ -196,5 +205,19 @@ public class GameGui extends JFrame {
 
     public void setState(int state) {
         this.state = state;
+    }
+    
+    public void playSound(String relativePath) {
+    	String soundName = relativePath;    
+    	AudioInputStream audioInputStream;
+		try {
+			audioInputStream = AudioSystem.getAudioInputStream(new File(soundName).getAbsoluteFile());
+			Clip clip = AudioSystem.getClip();
+	    	clip.open(audioInputStream);
+	    	clip.start();
+		} catch (Exception e) {
+			System.out.println("Sound did not load");
+		}
+    	
     }
 }
