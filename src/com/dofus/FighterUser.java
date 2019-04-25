@@ -141,6 +141,7 @@ public class FighterUser extends Fighter implements Runnable{
 		amountAttackUser= this.attackPerTurn(this.getWeapon());
 		updateMyDamage(amountAttackUser);
 		delay(1); // 1 second of break
+        updateScreen();
 			if (isAttacksF(fighters.get(0)))
 			{
                 updateAlertBox("Lucky ! You can hit the monster!");
@@ -174,9 +175,10 @@ public class FighterUser extends Fighter implements Runnable{
 				else //the monster has no hp : dead
 				{
                     updateAlertBox("The Monster "+fighters.get(0).getName()+" is dead... Good Job ! End of fight.");
-					delay(2); // 1 second of break
+					delay(3); // 1 second of break
                     updateAlertBox("You take "+(i+1)+" turns to win.");
-					delay(2); // 1 second of break
+					delay(3); // 1 second of break
+
 					//have new Weapon ?
 					isBetterWeapon(fighters.get(0).getWeapon(),  this.getWeapon()); //pas sur du tout que cela marche, Ã  vÃ©rifier
 					//have new Armor ? 
@@ -200,6 +202,7 @@ public class FighterUser extends Fighter implements Runnable{
 					i=-1;
 					//we delete the fighter who is not alive.
 					fighters.remove(0);
+                    updateAlertBox("Ready to continue ?");
 					if(fighters.size() == 0) {
 						gui.setUserStatusText("You won CONGRATS");
 						delay(2);
@@ -216,6 +219,7 @@ public class FighterUser extends Fighter implements Runnable{
 					
 					stateRest =false;
                     updateScreen();
+                    this.setStateRest(false);
                     Thread.currentThread().interrupt();
 					//return 1;
 				}
@@ -233,6 +237,7 @@ public class FighterUser extends Fighter implements Runnable{
 		}
 
         updateScreen();
+		this.setStateRest(false);
 		Thread.currentThread().interrupt();
 	}
 	

@@ -12,6 +12,7 @@ public class PotionScrollGui extends JFrame {
 
 	private FighterUser user; // The user
 	private JLabel messageLabel; // A message to the user
+	private JLabel inventory; // A message to the user
 
 	// The buttons
 	private JButton potion;
@@ -66,6 +67,7 @@ public class PotionScrollGui extends JFrame {
 
 		// Create the label, text field, and radio buttons.
 		messageLabel = new JLabel("Choose your bonus");
+		inventory = new JLabel("");
 		// Create the buttons
 		potion = new JButton("Potion");
 		scroll = new JButton("Scroll");
@@ -88,6 +90,7 @@ public class PotionScrollGui extends JFrame {
 		buypotion.setFont(buttonFont);
 		buyscroll.setFont(buttonFont);
 		messageLabel.setFont(new Font("Serif", Font.BOLD, 25));
+		inventory.setFont(new Font("Serif", Font.BOLD, 25));
 
 		// Change the color of the buttons
 		potion.setBackground(Color.GREEN);
@@ -96,9 +99,11 @@ public class PotionScrollGui extends JFrame {
 		buypotion.setBackground(Color.LIGHT_GRAY);
 		buyscroll.setBackground(Color.YELLOW);
 		messageLabel.setForeground(Color.blue);
+        inventory.setForeground(Color.white);
 
 		// Absolute positioning
 		messageLabel.setBounds(340, 10, 250, 100);
+		inventory.setBounds(200, 400, 400, 400);
 		scroll.setBounds(450, 140, 150, 50);
 		back.setBounds(350, 200, 150, 50);
 		potion.setBounds(250, 140, 150, 50);
@@ -113,6 +118,9 @@ public class PotionScrollGui extends JFrame {
 		add(buypotion);
 		add(buyscroll);
 		add(messageLabel);
+		add(inventory);
+
+        updatePotionScreen();
 
 	}
 
@@ -122,20 +130,24 @@ public class PotionScrollGui extends JFrame {
 			if (e.getSource() == potion) {
 
 				user.utilizePotion();
+                updatePotionScreen();
 				GameGui.playSound("src\\com\\dofus\\drink.wav");
 			}
 			if (e.getSource() == scroll) {
 
 				user.utilizeScroll();
+                updatePotionScreen();
 				GameGui.playSound("src\\com\\dofus\\drink.wav");
 			}
 			if (e.getSource() == buypotion) {
 				user.buyPotion();
+                updatePotionScreen();
 				GameGui.playSound("src\\com\\dofus\\purchase.wav");
 				
 			}
 			if (e.getSource() == buyscroll) {
 				user.buyScroll();
+                updatePotionScreen();
 				GameGui.playSound("src\\com\\dofus\\purchase.wav");
 			}
 			if (e.getSource() == back) {
@@ -145,6 +157,17 @@ public class PotionScrollGui extends JFrame {
 
 		}
 
+	}
+
+	private void updatePotionScreen(){
+		inventory.setText("<html><div style='text-align: center;'>Your inventory :</div><br>"
+                + "<div style='text-align: center;'>Your HP: "+user.getHitPoints()+"</div><br>"
+				+ "<div style='text-align: center;'>Number of potions: "+user.getTreasures().getNbPotions()+"</div><br>"
+				+ "<div style='text-align: center;'>Number of scroll: "+user.getTreasures().getScroll()+"</div><br>"
+				+ "<div style='text-align: center;'>Gold :"+user.getTreasures().getGold()+"</div><br>"
+				+ "<div style='text-align: center;'>Silver :"+user.getTreasures().getSilver()+"</div><br></html>"
+		);
+		inventory.setHorizontalAlignment(SwingConstants.CENTER);
 	}
 
 }

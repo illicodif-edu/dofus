@@ -104,7 +104,7 @@ public class GameGui extends JFrame {
         monsterStatus.setFont(new Font("Serif", Font.BOLD, 19));
         monsterStatus.setForeground(Color.red);
 
-        alertBox.setText("<html><div style='text-align: center;'>You hit !</div></html>");
+
 		alertBox.setFont(new Font("Serif", Font.BOLD, 19));
 		alertBox.setForeground(Color.red);
 
@@ -183,19 +183,33 @@ public class GameGui extends JFrame {
 			}
 			if (e.getSource() == rest) {
 				if(user.getStateRest() == false) {
-					playSound("src\\com\\dofus\\baillement.wav");
-                    System.out.println("I sleep");
+
+                    alertBox.setText("I sleep");
                     // 50% chances to regain hp
                     if (Math.random() < 0.5) {
-                        user.setHitPoints(user.getHitPoints() + (11 + (int) (Math.random() * ((20 - 11) + 1))));
-
+                        playSound("src\\com\\dofus\\baillement.wav");
+                        int point = (11 + (int) (Math.random() * ((20 - 11) + 1)));
+                        user.setHitPoints(user.getHitPoints() + point);
+                        alertBox.setText("I sleep, I regain "+point+" HP");
+                        alertBox.setHorizontalAlignment(SwingConstants.CENTER);
+                        userStatus.setText("<html>User Summary"
+                                + "<div>Your HP: "+user.getHitPoints()+"<div><br>"
+                                + "<div>Your armor is: "+user.getArmors1().getName()+" ("+user.getArmors1().getProtection()+")<div><br>"
+                                + "<div>Your shield (if you have one) is: "+user.getArmors2().getName()+" ("+user.getArmors2().getProtection()+")<div><br>"
+                                + "<div>Your weapon is: "+user.getWeapon().getName()+" with: "+user.getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> <div>"
+                                + "<div>and: "+user.getWeapon().getMinDamage()+" of minimum damage and: "+user.getWeapon().getMaxDamage()+" of maxmimum damage<div><br>"
+                                + "<div>Your have: "+user.getTreasures().getNbPotions()+" potions, "+user.getTreasures().getScroll()+" scroll, "+user.getTreasures().getGold()+" gold, "+user.getTreasures().getSilver()+" silver."+"<div></html>"
+                        );
                     }
 
                     // 50% to fight
                     else {
                         //this.fight();
+                        playSound("src\\com\\dofus\\bruitepee.wav");
                         Thread t = new Thread(user);
+                        user.setStateRest(true);
                         t.start();
+
                     }
                     user.setStateRest(true);
                 }
@@ -207,6 +221,7 @@ public class GameGui extends JFrame {
 			if (e.getSource() == fight) {
 				playSound("src\\com\\dofus\\bruitepee.wav");
                 Thread t = new Thread(user);
+                user.setStateRest(true);
                 t.start();
 			}
 
