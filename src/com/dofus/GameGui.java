@@ -26,7 +26,7 @@ public class GameGui extends JFrame {
 	private JButton fight;
 
 	private final int WINDOW_WIDTH = 1000; // Window width
-	private final int WINDOW_HEIGHT = 1000; // Window height
+	private final int WINDOW_HEIGHT = 900; // Window height
 
 
 	public GameGui(FighterUser user) {
@@ -85,7 +85,8 @@ public class GameGui extends JFrame {
 					+ "<div>Your shield (if you have one) is: "+user.getArmors2().getName()+" ("+user.getArmors2().getProtection()+")<div><br>"
 					+ "<div>Your weapon is: "+user.getWeapon().getName()+" with: "+user.getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> <div>"
 					+ "<div>and: "+user.getWeapon().getMinDamage()+" of minimum damage and: "+user.getWeapon().getMaxDamage()+" of maxmimum damage<div></html>"
-				);
+                    + "<div>Your have: "+user.getTreasures().getNbPotions()+" potions,"+user.getTreasures().getScroll()+" scroll,"+user.getTreasures().getGold()+" gold,"+user.getTreasures().getSilver()+" silver."+")<div><br>"
+        );
 		userStatus.setFont(new Font("Serif", Font.BOLD, 19));
 		userStatus.setForeground(Color.red);
 

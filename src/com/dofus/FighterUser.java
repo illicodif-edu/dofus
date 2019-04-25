@@ -352,6 +352,7 @@ public class FighterUser extends Fighter implements Runnable{
                 + "<div>Your shield (if you have one) is: "+this.getArmors2().getName()+" ("+this.getArmors2().getProtection()+")<div><br>"
                 + "<div>Your weapon is: "+this.getWeapon().getName()+" with: "+this.getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> <div>"
                 + "<div>and: "+this.getWeapon().getMinDamage()+" of minimum damage and: "+this.getWeapon().getMaxDamage()+" of maxmimum damage<div></html>"
+                + "<div>Your have: "+this.getTreasures().getNbPotions()+" potions,"+this.getTreasures().getScroll()+" scroll,"+this.getTreasures().getGold()+" gold,"+this.getTreasures().getSilver()+" silver."+")<div><br>"
         );
     }
 
