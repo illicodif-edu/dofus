@@ -146,7 +146,7 @@ public class GameGui extends JFrame {
 		
 		messageLabel.setBounds(440, 20, 150, 50);
 		userStatus.setBounds(10,0,440,400);
-		monsterStatus.setBounds(580,0,400,400);
+		monsterStatus.setBounds(520,0,460,400);
 		quit.setBounds(550, 500, 150, 50);
 		potionScroll.setBounds(550, 440, 150, 50);
 		rest.setBounds(350, 500, 150, 50);
@@ -206,7 +206,6 @@ public class GameGui extends JFrame {
 
                     // 50% to fight
                     else {
-                        //this.fight();
                         playSound("src\\com\\dofus\\bruitepee.wav");
                         Thread t = new Thread(user);
                         user.setStateRest(true);
