@@ -10,8 +10,17 @@ public class FighterUser extends Fighter implements Runnable{
 	// ArrayList of fighters
 	private ArrayList<Fighter> fighters;
 	private GameGui gui;
+	private boolean shop = true;
 
-	private boolean stateRest = false;
+    public boolean isShop() {
+        return shop;
+    }
+
+    public void setShop(boolean shop) {
+        this.shop = shop;
+    }
+
+    private boolean stateRest = false;
 	public FighterUser(Weapon weapon, Armor armor, Armor armor2, Treasure treasure, int hitPoints, ArrayList<Fighter> fighters) {
 		super("MOI",weapon, armor, armor2, treasure, hitPoints);
 		this.fighters = fighters;
@@ -220,6 +229,7 @@ public class FighterUser extends Fighter implements Runnable{
 					stateRest =false;
                     updateScreen();
                     this.setStateRest(false);
+                    this.setShop(true);
                     Thread.currentThread().interrupt();
 					//return 1;
 				}
@@ -238,6 +248,7 @@ public class FighterUser extends Fighter implements Runnable{
 
         updateScreen();
 		this.setStateRest(false);
+        this.setShop(true);
 		Thread.currentThread().interrupt();
 	}
 	

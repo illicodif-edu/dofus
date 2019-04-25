@@ -178,8 +178,10 @@ public class GameGui extends JFrame {
 
 			// Test on the button to trigger the right function
 			if (e.getSource() == potionScroll) {
-				dispose();
-				new PotionScrollGui(user);
+                if(user.isShop()) {
+                    dispose();
+                    new PotionScrollGui(user);
+                }
 			}
 			if (e.getSource() == rest) {
 				if(user.getStateRest() == false) {
@@ -208,6 +210,7 @@ public class GameGui extends JFrame {
                         playSound("src\\com\\dofus\\bruitepee.wav");
                         Thread t = new Thread(user);
                         user.setStateRest(true);
+                        user.setShop(false);
                         t.start();
 
                     }
@@ -221,6 +224,7 @@ public class GameGui extends JFrame {
 			if (e.getSource() == fight) {
 				playSound("src\\com\\dofus\\bruitepee.wav");
                 Thread t = new Thread(user);
+                user.setShop(false);
                 user.setStateRest(true);
                 t.start();
 			}
