@@ -43,13 +43,13 @@ public class Main{
 		ArrayList<Fighter> fighters = new ArrayList<Fighter>();
 		
 		fighters.add(orc);
-		/*fighters.add(nestOfSnakes);
+		fighters.add(nestOfSnakes);
 		fighters.add(troll);
 		fighters.add(berserker);
 		fighters.add(ninja);
-		fighters.add(dragon);*/
+		fighters.add(dragon);
 		fighters.add(doppleganger);
-		// fighters.add(wizard);
+		fighters.add(wizard);
 		
 		
 		FighterUser user = new FighterUser(swortStartUser, leatherArmor, noShield, new Treasure(2, 1, 0, 0), 50, fighters);
