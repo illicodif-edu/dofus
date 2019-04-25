@@ -24,6 +24,7 @@ public class GameGui extends JFrame {
 	private JLabel alertBox = new JLabel();
 	private JLabel myDamage = new JLabel();
 	private JLabel monsterDamage= new JLabel();
+	private JLabel userFace = new JLabel();
 
 	
 
@@ -154,6 +155,9 @@ public class GameGui extends JFrame {
         myDamage.setBounds(10, 720, 490, 70);
         alertBox.setBounds(50, 560, 900, 50);
         monsterDamage.setBounds(500, 720, 490, 70);
+        userFace.setBounds(10, 450, 230, 300);
+        ImageIcon iconFace = new ImageIcon("src\\com\\dofus\\art_cra.png");
+        userFace.setIcon(iconFace);
 
 
 		// Add the components to the main panel.
@@ -168,6 +172,7 @@ public class GameGui extends JFrame {
 		add(myDamage);
 		add(alertBox);
 		add(monsterDamage);
+		add(userFace);
 
 	}
 
