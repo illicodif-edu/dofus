@@ -122,16 +122,21 @@ public class PotionScrollGui extends JFrame {
 			if (e.getSource() == potion) {
 
 				user.utilizePotion();
+				GameGui.playSound("src\\com\\dofus\\drink.wav");
 			}
 			if (e.getSource() == scroll) {
 
 				user.utilizeScroll();
+				GameGui.playSound("src\\com\\dofus\\drink.wav");
 			}
 			if (e.getSource() == buypotion) {
 				user.buyPotion();
+				GameGui.playSound("src\\com\\dofus\\purchase.wav");
+				
 			}
 			if (e.getSource() == buyscroll) {
 				user.buyScroll();
+				GameGui.playSound("src\\com\\dofus\\purchase.wav");
 			}
 			if (e.getSource() == back) {
 				dispose();

@@ -183,7 +183,7 @@ public class GameGui extends JFrame {
 			}
 			if (e.getSource() == rest) {
 				if(user.getStateRest() == false) {
-
+					playSound("src\\com\\dofus\\baillement.wav");
                     System.out.println("I sleep");
                     // 50% chances to regain hp
                     if (Math.random() < 0.5) {
@@ -240,7 +240,7 @@ public class GameGui extends JFrame {
 
 
     
-    public void playSound(String relativePath) {
+    static public void playSound(String relativePath) {
     	String soundName = relativePath;    
     	AudioInputStream audioInputStream;
 		try {
