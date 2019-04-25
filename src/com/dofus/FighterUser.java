@@ -356,13 +356,13 @@ public class FighterUser extends Fighter implements Runnable{
     }
 
     public void updateMonsterStatus(){
-        gui.setMonsterStatus("<html>Monster Summary"
-                + "<div>His name: "+fighters.get(0).getName()+"<div><br>"
-                + "<div>His HP: "+fighters.get(0).getHitPoints()+"<div><br>"
-                + "<div>Your armor is: "+fighters.get(0).getArmors1().getName()+" ("+fighters.get(0).getArmors1().getProtection()+")<div><br>"
-                + "<div>Your shield (if you have one) is: "+fighters.get(0).getArmors2().getName()+" ("+fighters.get(0).getArmors2().getProtection()+")<div><br>"
-                + "<div>Your weapon is: "+fighters.get(0).getWeapon().getName()+" with: "+fighters.get(0).getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> <div>"
-                + "<div>and: "+fighters.get(0).getWeapon().getMinDamage()+" of minimum damage and: "+fighters.get(0).getWeapon().getMaxDamage()+" of maxmimum damage<div></html>"
+        gui.setMonsterStatus("<html><div style='text-align: right;'>Monster Summary</div><br>"
+                + "<div style='text-align: right;'>His name: "+fighters.get(0).getName()+"</div><br>"
+                + "<div style='text-align: right;'>His HP: "+fighters.get(0).getHitPoints()+"</div><br>"
+                + "<div style='text-align: right;'>Your armor is: "+fighters.get(0).getArmors1().getName()+" ("+fighters.get(0).getArmors1().getProtection()+")</div><br>"
+                + "<div style='text-align: right;'>Your shield (if you have one) is: "+fighters.get(0).getArmors2().getName()+" ("+fighters.get(0).getArmors2().getProtection()+")</div><br>"
+                + "<div style='text-align: right;'>Your weapon is: "+fighters.get(0).getWeapon().getName()+" with: "+fighters.get(0).getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> </div>"
+                + "<div style='text-align: right;'>and: "+fighters.get(0).getWeapon().getMinDamage()+" of minimum damage and: "+fighters.get(0).getWeapon().getMaxDamage()+" of maxmimum damage</div></html>"
         );
     }
 

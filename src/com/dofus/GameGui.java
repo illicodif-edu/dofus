@@ -14,7 +14,7 @@ public class GameGui extends JFrame {
 	private FighterUser user; // The user
 	private JLabel messageLabel; // Add a message
 	private JLabel userStatus = new JLabel();
-	private JLabel monsterStatus = new JLabel("<html>Monster Summary</html>");
+	private JLabel monsterStatus = new JLabel();
 	private int state;
 
 	
@@ -25,8 +25,8 @@ public class GameGui extends JFrame {
 	private JButton potionScroll;
 	private JButton fight;
 
-	private final int WINDOW_WIDTH = 800; // Window width
-	private final int WINDOW_HEIGHT = 800; // Window height
+	private final int WINDOW_WIDTH = 1000; // Window width
+	private final int WINDOW_HEIGHT = 1000; // Window height
 
 
 	public GameGui(FighterUser user) {
@@ -76,7 +76,7 @@ public class GameGui extends JFrame {
 		ButtonListener buttonL = new ButtonListener();
 
 		// Create the label, text field, and buttons.
-		messageLabel = new JLabel("<html><div>Bienvenue dans (presque) Dofus</div></html>");
+		messageLabel = new JLabel("<html><div style='text-align: right;'>Bienvenue dans (presque) Dofus</div></html>");
 		messageLabel.setFont(new Font("Serif", Font.BOLD, 19));
 		
 		userStatus.setText("<html>User Summary"
@@ -120,13 +120,13 @@ public class GameGui extends JFrame {
 		fight.addActionListener(buttonL);
 
 		
-		messageLabel.setBounds(340, 10, 150, 50);
+		messageLabel.setBounds(440, 10, 150, 50);
 		userStatus.setBounds(10,0,400,300);
-		monsterStatus.setBounds(0,500,400,300);
-		quit.setBounds(450, 400, 150, 50);
-		potionScroll.setBounds(450, 340, 150, 50);
-		rest.setBounds(250, 400, 150, 50);
-		fight.setBounds(250, 340, 150, 50);
+		monsterStatus.setBounds(580,0,400,300);
+		quit.setBounds(550, 400, 150, 50);
+		potionScroll.setBounds(550, 340, 150, 50);
+		rest.setBounds(350, 400, 150, 50);
+		fight.setBounds(350, 340, 150, 50);
 
 		// Add the components to the main panel.
 
@@ -189,6 +189,7 @@ public class GameGui extends JFrame {
 
     public void setMonsterStatus(String text) {
         monsterStatus.setText(text);
+        monsterStatus.setHorizontalAlignment(SwingConstants.RIGHT);
     }
 
 
