@@ -22,7 +22,7 @@ public class FighterUser extends Fighter implements Runnable{
 
     private boolean stateRest = false;
 	public FighterUser(Weapon weapon, Armor armor, Armor armor2, Treasure treasure, int hitPoints, ArrayList<Fighter> fighters) {
-		super("MOI",weapon, armor, armor2, treasure, hitPoints);
+		super("MOI",weapon, armor, armor2, treasure, hitPoints, "src\\com\\dofus\\art_cra.png");
 		this.fighters = fighters;
 	}
 	
@@ -137,6 +137,7 @@ public class FighterUser extends Fighter implements Runnable{
 	public void run() { //fight()
 		updateScreen();
 		updateAlertBox("I fight");
+		gui.setMonsterImage(fighters.get(0).getPath());
 		int amountAttackUser;
 		int amountAttackF; //fighter f
 		int i=0; // indice for the loop while

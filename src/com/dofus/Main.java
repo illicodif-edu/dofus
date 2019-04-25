@@ -31,14 +31,14 @@ public class Main{
 		Armor heavyShield = new Armor("Heavy Shield",4,true,2);
 		Armor magicAura = new Armor("Magic Aura",15,false,1);
 		
-		Fighter orc = new Fighter("Orc",dagger, chainMail, noShield, new Treasure(1, 0, 1,0), 22);
-		Fighter nestOfSnakes = new Fighter("Nest of Snakes",venom, noArmor, noShield, new Treasure(1, 0, 0,0), 12);
-		Fighter troll = new Fighter("Troll",hands, hide, noShield, new Treasure(2, 0, 1, 1), 35);
-		Fighter berserker = new Fighter("Berserker",swordBerserker, skin, shield, new Treasure(1, 0, 0, 1), 28);
-		Fighter ninja = new Fighter("Ninja",superSword, chainMail, noShield, new Treasure(2, 1, 0, 0), 40);
-		Fighter dragon = new Fighter("Dragon",claws, skin, noShield, new Treasure(0, 1, 1, 3), 25);
-		Fighter doppleganger = new Fighter("Dopple Ganger",null, null, heavyShield, null, 0);
-		Fighter wizard = new Fighter("The wizard",lightningBolts, magicAura, null, new Treasure(0, 0, 3, 0), 150);
+		Fighter orc = new Fighter("Orc",dagger, chainMail, noShield, new Treasure(1, 0, 1,0), 22, "src\\com\\dofus\\orc.png");
+		Fighter nestOfSnakes = new Fighter("Nest of Snakes",venom, noArmor, noShield, new Treasure(1, 0, 0,0), 12, "src\\com\\dofus\\snake.png");
+		Fighter troll = new Fighter("Troll",hands, hide, noShield, new Treasure(2, 0, 1, 1), 35,"src\\com\\dofus\\troll.png");
+		Fighter berserker = new Fighter("Berserker",swordBerserker, skin, shield, new Treasure(1, 0, 0, 1), 28, "src\\com\\dofus\\ber.png");
+		Fighter ninja = new Fighter("Ninja",superSword, chainMail, noShield, new Treasure(2, 1, 0, 0), 40, "src\\com\\dofus\\ninja.png");
+		Fighter dragon = new Fighter("Dragon",claws, skin, noShield, new Treasure(0, 1, 1, 3), 25, "src\\com\\dofus\\dragon.png");
+		Fighter doppleganger = new Fighter("Dopple Ganger",null, null, heavyShield, null, 0, "src\\com\\dofus\\art_cra.png");
+		Fighter wizard = new Fighter("The wizard",lightningBolts, magicAura, null, new Treasure(0, 0, 3, 0), 150, "src\\com\\dofus\\wizard.png");
 		
 		ArrayList<Fighter> fighters = new ArrayList<Fighter>();
 		

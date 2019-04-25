@@ -25,6 +25,7 @@ public class GameGui extends JFrame {
 	private JLabel myDamage = new JLabel();
 	private JLabel monsterDamage= new JLabel();
 	private JLabel userFace = new JLabel();
+	private JLabel monsterFace = new JLabel();
 
 	
 
@@ -156,7 +157,8 @@ public class GameGui extends JFrame {
         alertBox.setBounds(50, 560, 900, 50);
         monsterDamage.setBounds(500, 720, 490, 70);
         userFace.setBounds(10, 450, 230, 300);
-        ImageIcon iconFace = new ImageIcon("src\\com\\dofus\\art_cra.png");
+        monsterFace.setBounds(740, 450, 230, 300);
+        ImageIcon iconFace = new ImageIcon(user.getPath());
         userFace.setIcon(iconFace);
 
 
@@ -173,6 +175,7 @@ public class GameGui extends JFrame {
 		add(alertBox);
 		add(monsterDamage);
 		add(userFace);
+		add(monsterFace);
 
 	}
 
@@ -261,6 +264,11 @@ public class GameGui extends JFrame {
     public void setAlertBox(String text) {
         alertBox.setText(text);
         alertBox.setHorizontalAlignment(SwingConstants.CENTER);
+    }
+
+    public void setMonsterImage(String path) {
+        ImageIcon iconFace = new ImageIcon(path);
+        monsterFace.setIcon(iconFace);
     }
 
 

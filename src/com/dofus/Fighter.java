@@ -8,14 +8,16 @@ public class Fighter {
     private Armor[] armors = new Armor[2];
     private Treasure treasures;
     private int hitPoints;
+    private String path;
     
-    public Fighter(String name,Weapon weapon, Armor armor1, Armor armor2, Treasure treasures, int hitPoints) {
+    public Fighter(String name,Weapon weapon, Armor armor1, Armor armor2, Treasure treasures, int hitPoints, String path) {
         this.weapon = weapon;
         this.name = name;
         this.armors[0] = armor1;
         this.armors[1] = armor2;
         this.treasures = treasures;
         this.hitPoints = hitPoints;
+        this.path = path;
     }
     
     public String getName() {
@@ -64,6 +66,11 @@ public class Fighter {
     }
 
 
+    public String getPath() {
+        return path;
+    }
 
-
+    public void setPath(String path) {
+        this.path = path;
+    }
 }
