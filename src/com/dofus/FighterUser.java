@@ -197,6 +197,20 @@ public class FighterUser extends Fighter implements Runnable{
 					i=-1;
 					//we delete the fighter who is not alive.
 					fighters.remove(0);
+					if(fighters.size() == 0) {
+						gui.setUserStatusText("You won CONGRATS");
+						delay(2);
+						this.quit();
+						
+					}
+					if(fighters.get(0).getName() == "Dopple Ganger") {
+						fighters.get(0).setArmors1(this.getArmors1());
+						fighters.get(0).setArmors2(this.getArmors2());
+						fighters.get(0).setWeapon(this.getWeapon());
+						fighters.get(0).setTreasures(this.getTreasures());	
+						fighters.get(0).setHitPoints(this.getHitPoints());
+					}
+					
 					stateRest =false;
 					gui.setState(1);
                     updateScreen();
@@ -205,8 +219,9 @@ public class FighterUser extends Fighter implements Runnable{
 				}
 			}
 			else { //The user cannot attacks the fighter. But the fighter can : BOUM !
+				if(Math.random()>0.8) {
 				//attacks of the fighter f
-				takesDamagesUser(amountAttackF);
+				takesDamagesUser(amountAttackF);}
 				//test alive for the user
 				this.testDeadUser();
                 updateScreen();
