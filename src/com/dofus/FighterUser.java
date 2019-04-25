@@ -126,6 +126,7 @@ public class FighterUser extends Fighter implements Runnable{
 	}
 	// To fight
 	public void run() {
+		updateScreen();
 		System.out.println("I fight");
 		int amountAttackUser;
 		int amountAttackF; //fighter f

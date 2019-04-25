@@ -21,6 +21,9 @@ public class GameGui extends JFrame {
 	private JLabel messageLabel; // Add a message
 	private JLabel userStatus = new JLabel();
 	private JLabel monsterStatus = new JLabel();
+	private JLabel alertBox = new JLabel();
+	private JLabel myDamage = new JLabel();
+	private JLabel monsterDamage= new JLabel();
 	private int state;
 
 	
@@ -101,6 +104,18 @@ public class GameGui extends JFrame {
 
         monsterStatus.setFont(new Font("Serif", Font.BOLD, 19));
         monsterStatus.setForeground(Color.red);
+
+		alertBox.setFont(new Font("Serif", Font.BOLD, 19));
+		alertBox.setForeground(Color.red);
+
+        monsterDamage.setText("<html>The monster will fight with 0 damages per turn.</html>");
+		monsterDamage.setFont(new Font("Serif", Font.BOLD, 19));
+		monsterDamage.setForeground(Color.red);
+		monsterDamage.setHorizontalAlignment(SwingConstants.RIGHT);
+
+		myDamage.setText("<html>You will fight with 0 damages per turn</html>");
+		myDamage.setFont(new Font("Serif", Font.BOLD, 19));
+		myDamage.setForeground(Color.red);
 		
 		
 		// Create the buttons
@@ -136,6 +151,10 @@ public class GameGui extends JFrame {
 		potionScroll.setBounds(550, 440, 150, 50);
 		rest.setBounds(350, 500, 150, 50);
 		fight.setBounds(350, 440, 150, 50);
+        myDamage.setBounds(10, 790, 440, 100);
+        alertBox.setBounds(650, 400, 200, 100);
+        monsterDamage.setBounds(580, 790, 400, 100);
+
 
 		// Add the components to the main panel.
 
@@ -146,6 +165,9 @@ public class GameGui extends JFrame {
 		add(messageLabel);
 		add(userStatus);
 		add(monsterStatus);
+		add(myDamage);
+		add(alertBox);
+		add(monsterDamage);
 
 	}
 
