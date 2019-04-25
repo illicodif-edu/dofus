@@ -26,7 +26,7 @@ public class GameGui extends JFrame {
 	private JButton fight;
 
 	private final int WINDOW_WIDTH = 1000; // Window width
-	private final int WINDOW_HEIGHT = 1000; // Window height
+	private final int WINDOW_HEIGHT = 900; // Window height
 
 
 	public GameGui(FighterUser user) {
@@ -84,8 +84,9 @@ public class GameGui extends JFrame {
 					+ "<div>Your armor is: "+user.getArmors1().getName()+" ("+user.getArmors1().getProtection()+")<div><br>"
 					+ "<div>Your shield (if you have one) is: "+user.getArmors2().getName()+" ("+user.getArmors2().getProtection()+")<div><br>"
 					+ "<div>Your weapon is: "+user.getWeapon().getName()+" with: "+user.getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> <div>"
-					+ "<div>and: "+user.getWeapon().getMinDamage()+" of minimum damage and: "+user.getWeapon().getMaxDamage()+" of maxmimum damage<div></html>"
-				);
+					+ "<div>and: "+user.getWeapon().getMinDamage()+" of minimum damage and: "+user.getWeapon().getMaxDamage()+" of maxmimum damage<div><br>"
+                    + "<div>Your have: "+user.getTreasures().getNbPotions()+" potions, "+user.getTreasures().getScroll()+" scroll, "+user.getTreasures().getGold()+" gold, "+user.getTreasures().getSilver()+" silver."+"<div></html>"
+        );
 		userStatus.setFont(new Font("Serif", Font.BOLD, 19));
 		userStatus.setForeground(Color.red);
 
@@ -121,12 +122,12 @@ public class GameGui extends JFrame {
 
 		
 		messageLabel.setBounds(440, 10, 150, 50);
-		userStatus.setBounds(10,0,400,300);
-		monsterStatus.setBounds(580,0,400,300);
-		quit.setBounds(550, 400, 150, 50);
-		potionScroll.setBounds(550, 340, 150, 50);
-		rest.setBounds(350, 400, 150, 50);
-		fight.setBounds(350, 340, 150, 50);
+		userStatus.setBounds(10,0,440,400);
+		monsterStatus.setBounds(580,0,400,400);
+		quit.setBounds(550, 500, 150, 50);
+		potionScroll.setBounds(550, 440, 150, 50);
+		rest.setBounds(350, 500, 150, 50);
+		fight.setBounds(350, 440, 150, 50);
 
 		// Add the components to the main panel.
 
