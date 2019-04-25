@@ -351,8 +351,8 @@ public class FighterUser extends Fighter implements Runnable{
                 + "<div>Your armor is: "+this.getArmors1().getName()+" ("+this.getArmors1().getProtection()+")<div><br>"
                 + "<div>Your shield (if you have one) is: "+this.getArmors2().getName()+" ("+this.getArmors2().getProtection()+")<div><br>"
                 + "<div>Your weapon is: "+this.getWeapon().getName()+" with: "+this.getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> <div>"
-                + "<div>and: "+this.getWeapon().getMinDamage()+" of minimum damage and: "+this.getWeapon().getMaxDamage()+" of maxmimum damage<div></html>"
-                + "<div>Your have: "+this.getTreasures().getNbPotions()+" potions,"+this.getTreasures().getScroll()+" scroll,"+this.getTreasures().getGold()+" gold,"+this.getTreasures().getSilver()+" silver."+")<div><br>"
+                + "<div>and: "+this.getWeapon().getMinDamage()+" of minimum damage and: "+this.getWeapon().getMaxDamage()+" of maxmimum damage<div><br>"
+                + "<div>Your have: "+this.getTreasures().getNbPotions()+" potions, "+this.getTreasures().getScroll()+" scroll, "+this.getTreasures().getGold()+" gold, "+this.getTreasures().getSilver()+" silver. "+"<div></html>"
         );
     }
 
@@ -360,9 +360,9 @@ public class FighterUser extends Fighter implements Runnable{
         gui.setMonsterStatus("<html><div style='text-align: right;'>Monster Summary</div><br>"
                 + "<div style='text-align: right;'>His name: "+fighters.get(0).getName()+"</div><br>"
                 + "<div style='text-align: right;'>His HP: "+fighters.get(0).getHitPoints()+"</div><br>"
-                + "<div style='text-align: right;'>Your armor is: "+fighters.get(0).getArmors1().getName()+" ("+fighters.get(0).getArmors1().getProtection()+")</div><br>"
-                + "<div style='text-align: right;'>Your shield (if you have one) is: "+fighters.get(0).getArmors2().getName()+" ("+fighters.get(0).getArmors2().getProtection()+")</div><br>"
-                + "<div style='text-align: right;'>Your weapon is: "+fighters.get(0).getWeapon().getName()+" with: "+fighters.get(0).getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> </div>"
+                + "<div style='text-align: right;'>His armor is: "+fighters.get(0).getArmors1().getName()+" ("+fighters.get(0).getArmors1().getProtection()+")</div><br>"
+                + "<div style='text-align: right;'>His shield (if he has one) is: "+fighters.get(0).getArmors2().getName()+" ("+fighters.get(0).getArmors2().getProtection()+")</div><br>"
+                + "<div style='text-align: right;'>His weapon is: "+fighters.get(0).getWeapon().getName()+" with: "+fighters.get(0).getWeapon().getAttacksPerTurn()+" attack(s) per turn <br> </div>"
                 + "<div style='text-align: right;'>and: "+fighters.get(0).getWeapon().getMinDamage()+" of minimum damage and: "+fighters.get(0).getWeapon().getMaxDamage()+" of maxmimum damage</div></html>"
         );
     }
